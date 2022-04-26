@@ -11,6 +11,9 @@
 		EBB3C4502816A25500768C2E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44F2816A25500768C2E /* ContentView.swift */; };
 		EBB3C4522816A25700768C2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB3C4512816A25700768C2E /* Assets.xcassets */; };
 		EBB3C4552816A25700768C2E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB3C4542816A25700768C2E /* Preview Assets.xcassets */; };
+		EBB3C45D2816BD8800768C2E /* HorariosBus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C45B2816BD8800768C2E /* HorariosBus.xcdatamodeld */; };
+		EBB3C45F2816C16400768C2E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C45E2816C16400768C2E /* DataController.swift */; };
+		EBB3C4632817159400768C2E /* SearchBusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C4622817159400768C2E /* SearchBusStop.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		EBB3C44F2816A25500768C2E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EBB3C4512816A25700768C2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBB3C4542816A25700768C2E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EBB3C45C2816BD8800768C2E /* HorariosBus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HorariosBus.xcdatamodel; sourceTree = "<group>"; };
+		EBB3C45E2816C16400768C2E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		EBB3C4622817159400768C2E /* SearchBusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBusStop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */,
-				EBB3C44F2816A25500768C2E /* ContentView.swift */,
+				EBB3C4612817155100768C2E /* CoreData */,
+				EBB3C4602817153D00768C2E /* View */,
 				EBB3C4512816A25700768C2E /* Assets.xcassets */,
 				EBB3C4532816A25700768C2E /* Preview Content */,
 			);
@@ -65,6 +72,24 @@
 				EBB3C4542816A25700768C2E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EBB3C4602817153D00768C2E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EBB3C44F2816A25500768C2E /* ContentView.swift */,
+				EBB3C4622817159400768C2E /* SearchBusStop.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EBB3C4612817155100768C2E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				EBB3C45B2816BD8800768C2E /* HorariosBus.xcdatamodeld */,
+				EBB3C45E2816C16400768C2E /* DataController.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +162,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBB3C45D2816BD8800768C2E /* HorariosBus.xcdatamodeld in Sources */,
+				EBB3C45F2816C16400768C2E /* DataController.swift in Sources */,
 				EBB3C4502816A25500768C2E /* ContentView.swift in Sources */,
+				EBB3C4632817159400768C2E /* SearchBusStop.swift in Sources */,
 				EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +367,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EBB3C45B2816BD8800768C2E /* HorariosBus.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EBB3C45C2816BD8800768C2E /* HorariosBus.xcdatamodel */,
+			);
+			currentVersion = EBB3C45C2816BD8800768C2E /* HorariosBus.xcdatamodel */;
+			path = HorariosBus.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EBB3C4422816A25500768C2E /* Project object */;
 }
