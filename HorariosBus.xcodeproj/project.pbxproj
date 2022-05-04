@@ -12,8 +12,10 @@
 		EBB3C4522816A25700768C2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB3C4512816A25700768C2E /* Assets.xcassets */; };
 		EBB3C4552816A25700768C2E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB3C4542816A25700768C2E /* Preview Assets.xcassets */; };
 		EBB3C45D2816BD8800768C2E /* HorariosBus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C45B2816BD8800768C2E /* HorariosBus.xcdatamodeld */; };
-		EBB3C45F2816C16400768C2E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C45E2816C16400768C2E /* DataController.swift */; };
-		EBB3C4632817159400768C2E /* SearchBusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C4622817159400768C2E /* SearchBusStop.swift */; };
+		EBB3C45F2816C16400768C2E /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C45E2816C16400768C2E /* PersistenceController.swift */; };
+		EBB3C4632817159400768C2E /* SearchBusStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C4622817159400768C2E /* SearchBusStopView.swift */; };
+		EBB3C4652818491100768C2E /* SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C4642818491100768C2E /* SelectorView.swift */; };
+		EBB3C46728185D5A00768C2E /* CellStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C46628185D5A00768C2E /* CellStopView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,8 +25,10 @@
 		EBB3C4512816A25700768C2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBB3C4542816A25700768C2E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EBB3C45C2816BD8800768C2E /* HorariosBus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HorariosBus.xcdatamodel; sourceTree = "<group>"; };
-		EBB3C45E2816C16400768C2E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		EBB3C4622817159400768C2E /* SearchBusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBusStop.swift; sourceTree = "<group>"; };
+		EBB3C45E2816C16400768C2E /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		EBB3C4622817159400768C2E /* SearchBusStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBusStopView.swift; sourceTree = "<group>"; };
+		EBB3C4642818491100768C2E /* SelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorView.swift; sourceTree = "<group>"; };
+		EBB3C46628185D5A00768C2E /* CellStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellStopView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				EBB3C44F2816A25500768C2E /* ContentView.swift */,
-				EBB3C4622817159400768C2E /* SearchBusStop.swift */,
+				EBB3C4622817159400768C2E /* SearchBusStopView.swift */,
+				EBB3C46628185D5A00768C2E /* CellStopView.swift */,
+				EBB3C4642818491100768C2E /* SelectorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -87,7 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				EBB3C45B2816BD8800768C2E /* HorariosBus.xcdatamodeld */,
-				EBB3C45E2816C16400768C2E /* DataController.swift */,
+				EBB3C45E2816C16400768C2E /* PersistenceController.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -162,11 +168,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBB3C46728185D5A00768C2E /* CellStopView.swift in Sources */,
 				EBB3C45D2816BD8800768C2E /* HorariosBus.xcdatamodeld in Sources */,
-				EBB3C45F2816C16400768C2E /* DataController.swift in Sources */,
+				EBB3C45F2816C16400768C2E /* PersistenceController.swift in Sources */,
 				EBB3C4502816A25500768C2E /* ContentView.swift in Sources */,
-				EBB3C4632817159400768C2E /* SearchBusStop.swift in Sources */,
+				EBB3C4632817159400768C2E /* SearchBusStopView.swift in Sources */,
 				EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */,
+				EBB3C4652818491100768C2E /* SelectorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

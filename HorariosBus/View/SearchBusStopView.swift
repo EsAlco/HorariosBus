@@ -1,5 +1,5 @@
 //
-//  SearchBusStop.swift
+//  SearchBusStopView.swift
 //  HorariosBus
 //
 //  Created by Esther Alcoceba Gutiérrez de León on 25/4/22.
@@ -7,15 +7,20 @@
 
 import SwiftUI
 
-struct SearchBusStop: View {
+struct SearchBusStopView: View {
     
-    @State private var searchText: String = ""
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
+    @FetchRequest(entity: BusStop.entity(), sortDescriptors: []) var busStops: FetchedResults<BusStop>
+    
+    @State var searchNumberStop: Int
+    @State var searchTextNumberStop: String
     
     var body: some View {
         NavigationView{
             Form{
                 Section{
-                    // TODO: tipos de buscador
+                    
                     HStack{
                         Spacer()
                         Button{
@@ -48,41 +53,54 @@ struct SearchBusStop: View {
                     // TODO: buscador
                     VStack{
                         HStack{
-                            TextField("", text: $searchText)
-                            
-                            Button{
-                                // TODO: buscar en la base de datos
-                            } label: {
+                            TextField("Código de parada", text: $searchTextNumberStop)
+                                .keyboardType(.numbersAndPunctuation)
+                                .disableAutocorrection(true)
+                        
+                            withAnimation {
                                 Text("Buscar")
                                     .foregroundColor(.white)
                                     .padding(5)
                                     .background(.green)
                                     .cornerRadius(7)
+                                    .onTapGesture {
+                                        if searchNumberStop.words.isEmpty{
+                                            // TODO: mensaje de error
+                                        }
+                                        // TODO: buscar en la base de datos
+                                    }
                             }
+                            
                         }
                         .padding(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 5, style: .continuous)
                                 .stroke(.gray, lineWidth: 1)
                         )
-                        
+                    }
+                    HStack{
+                        Spacer()
                         Text("Busca por el código de la parada. \nLo encontrarás en la marquesina.")
-                            .font(.system(size: 15))
-                            .multilineTextAlignment(.center)
+                            .font(.system(size: 16))
                             .frame(height: 40)
-                        
-                        Text("También tiene las opciones de arriba.")
+                        Spacer()
+                    }
+                    HStack{
+                        Spacer()
+                        Text("También tienes las opciones de arriba.")
                             .font(.system(size: 12))
+                        Spacer()
                     }
                 }
                 .padding(3)
+                .listRowSeparator(.hidden)
             }
         }
     }
 }
 
-struct SearchBusStop_Previews: PreviewProvider {
+struct SearchBusStopView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBusStop()
+        SearchBusStopView(searchNumberStop: 12345, searchTextNumberStop: "12345")
     }
 }

@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @Environment(\.managedObjectContext) var moc
+    @Environment(\.managedObjectContext) var managedObjectContext
     
-    @FetchRequest(sortDescriptors: []) var busStops: FetchedResults<BusStop>
+    @FetchRequest(entity: BusStop.entity(), sortDescriptors: []) var busStops: FetchedResults<BusStop>
     
     @State private var searchText: String = ""
     
@@ -20,42 +20,61 @@ struct ContentView: View {
         NavigationView{
             Form{
                 Section{
-                    Button{
-                        
-//                        let busStop = BusStop(context: moc)
-//                        busStop.name = "AV.Lazarejo-Santolina"
-//                        busStop.number = 15213
-//
-//                        try? moc.save()
-                    }label: {
-                        Image(systemName: "plus")
+                    HStack{
+                        /*
+                        Image(systemName: "bus.fill")
+                            .padding(14)
+                            .background(.green)
+                            .cornerRadius(25)
+                            .onTapGesture {
+                                
+                            }*/
+                        NavigationLink(destination: SearchBusStopView(searchNumberStop: 0, searchTextNumberStop: "Av")) {
+                            SelectorView(image: "bus.fill", color: .green)
+                            // TODO: guardar los datos
+                        }
+                        /*
+                        NavigationLink(destination: SearchBusStopView(searchNumberStop: 0, searchTextNumberStop: "Av")) {
+                            SelectorView(image: "bus.fill", color: .red)
+                        }*/
                     }
                 }
                 Section {
-                    List(busStops) { busStop in
-                        HStack{
-                            Image(systemName: "bus.fill")
-                                .padding(5)
-                                .foregroundColor(.green)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5, style: .continuous)
-                                        .stroke(.gray, lineWidth: 1)
-                                )
-                            
-                            VStack(alignment: .leading, spacing: 2){
-                                Text(busStop.name ?? "Desconocido")
-                                    .font(.system(.callout, design: .rounded))
-                                Text(String(busStop.number))
-                                    .font(.system(size: 12, weight: .light, design: .rounded))
-                            }
-                        }
+                    List{
+                        ForEach (busStops) { busStop in
+                        CellStopView(
+                            nameBus: busStop.name ?? "Desconocido",
+                            numberBus: Int(busStop.number))
                         
+                        }.onDelete(perform: removeBusStops)
                     }
                 }
             }
             .navigationTitle("Autobuses")
+            
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Add"){
+                        let busStop = BusStop(context: managedObjectContext)
+                        
+                        busStop.name = "Av Lazarejo / Santolina"
+                        busStop.number = 12345
+                        
+                        PersistenceController.shared.save()
+                    }
+                }
+            }
+            
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Número de parada")
         }
+    }
+    
+    func removeBusStops(at offsets: IndexSet) {
+        for index in offsets {
+            let busStop = busStops[index]
+            managedObjectContext.delete(busStop)
+        }
+        PersistenceController.shared.save()
     }
 }
 
