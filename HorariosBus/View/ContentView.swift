@@ -5,7 +5,8 @@
 //  Created by Esther Alcoceba Gutiérrez de León on 25/4/22.
 //
 
-import SwiftUI
+
+ import SwiftUI
 
 struct ContentView: View {
     
@@ -14,6 +15,7 @@ struct ContentView: View {
     @FetchRequest(entity: BusStop.entity(), sortDescriptors: []) var busStops: FetchedResults<BusStop>
     
     @State private var searchText: String = ""
+    @State var isInterBus = false
     
     
     var body: some View {
@@ -21,22 +23,16 @@ struct ContentView: View {
             Form{
                 Section{
                     HStack{
-                        /*
+    
                         Image(systemName: "bus.fill")
                             .padding(14)
                             .background(.green)
                             .cornerRadius(25)
                             .onTapGesture {
-                                
-                            }*/
-                        NavigationLink(destination: SearchBusStopView(searchNumberStop: 0, searchTextNumberStop: "Av")) {
-                            SelectorView(image: "bus.fill", color: .green)
-                            // TODO: guardar los datos
-                        }
-                        /*
-                        NavigationLink(destination: SearchBusStopView(searchNumberStop: 0, searchTextNumberStop: "Av")) {
-                            SelectorView(image: "bus.fill", color: .red)
-                        }*/
+                                self.isInterBus.toggle()
+                            }
+                        NavigationLink("", destination: SearchBusStopView(searchTextNumberStop: ""), isActive: $isInterBus)
+                            .hidden()
                     }
                 }
                 Section {

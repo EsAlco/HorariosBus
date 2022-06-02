@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB2AABBB2840986200A564A9 /* StopsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2AABBA2840986200A564A9 /* StopsResponse.swift */; };
+		EB2AABBE2840A82800A564A9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EB2AABBD2840A82800A564A9 /* Alamofire */; };
+		EB2AABC02840A9A500A564A9 /* NetworkingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2AABBF2840A9A500A564A9 /* NetworkingProvider.swift */; };
+		EB2AABC52848D2C800A564A9 /* DetailStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2AABC42848D2C800A564A9 /* DetailStopView.swift */; };
+		EB3D7F56282E73FC00FBD3FA /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D7F55282E73FC00FBD3FA /* Stop.swift */; };
 		EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */; };
 		EBB3C4502816A25500768C2E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44F2816A25500768C2E /* ContentView.swift */; };
 		EBB3C4522816A25700768C2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB3C4512816A25700768C2E /* Assets.xcassets */; };
@@ -19,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB2AABBA2840986200A564A9 /* StopsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsResponse.swift; sourceTree = "<group>"; };
+		EB2AABBF2840A9A500A564A9 /* NetworkingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProvider.swift; sourceTree = "<group>"; };
+		EB2AABC42848D2C800A564A9 /* DetailStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStopView.swift; sourceTree = "<group>"; };
+		EB3D7F55282E73FC00FBD3FA /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 		EBB3C44A2816A25500768C2E /* HorariosBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorariosBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorariosBusApp.swift; sourceTree = "<group>"; };
 		EBB3C44F2816A25500768C2E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,12 +45,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB2AABBE2840A82800A564A9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB2AABB92840980600A564A9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EB2AABC12840A9A900A564A9 /* Data */,
+				EB2AABBF2840A9A500A564A9 /* NetworkingProvider.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		EB2AABC12840A9A900A564A9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EB2AABBA2840986200A564A9 /* StopsResponse.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		EB3D7F54282E73E200FBD3FA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB3D7F55282E73FC00FBD3FA /* Stop.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EBB3C4412816A25500768C2E = {
 			isa = PBXGroup;
 			children = (
@@ -62,8 +97,10 @@
 			isa = PBXGroup;
 			children = (
 				EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */,
-				EBB3C4612817155100768C2E /* CoreData */,
 				EBB3C4602817153D00768C2E /* View */,
+				EB3D7F54282E73E200FBD3FA /* Model */,
+				EBB3C4612817155100768C2E /* CoreData */,
+				EB2AABB92840980600A564A9 /* Networking */,
 				EBB3C4512816A25700768C2E /* Assets.xcassets */,
 				EBB3C4532816A25700768C2E /* Preview Content */,
 			);
@@ -85,6 +122,7 @@
 				EBB3C4622817159400768C2E /* SearchBusStopView.swift */,
 				EBB3C46628185D5A00768C2E /* CellStopView.swift */,
 				EBB3C4642818491100768C2E /* SelectorView.swift */,
+				EB2AABC42848D2C800A564A9 /* DetailStopView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -114,6 +152,9 @@
 			dependencies = (
 			);
 			name = HorariosBus;
+			packageProductDependencies = (
+				EB2AABBD2840A82800A564A9 /* Alamofire */,
+			);
 			productName = HorariosBus;
 			productReference = EBB3C44A2816A25500768C2E /* HorariosBus.app */;
 			productType = "com.apple.product-type.application";
@@ -142,6 +183,9 @@
 				Base,
 			);
 			mainGroup = EBB3C4412816A25500768C2E;
+			packageReferences = (
+				EB2AABBC2840A82800A564A9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = EBB3C44B2816A25500768C2E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -168,12 +212,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB3D7F56282E73FC00FBD3FA /* Stop.swift in Sources */,
+				EB2AABC52848D2C800A564A9 /* DetailStopView.swift in Sources */,
+				EB2AABBB2840986200A564A9 /* StopsResponse.swift in Sources */,
 				EBB3C46728185D5A00768C2E /* CellStopView.swift in Sources */,
 				EBB3C45D2816BD8800768C2E /* HorariosBus.xcdatamodeld in Sources */,
 				EBB3C45F2816C16400768C2E /* PersistenceController.swift in Sources */,
 				EBB3C4502816A25500768C2E /* ContentView.swift in Sources */,
 				EBB3C4632817159400768C2E /* SearchBusStopView.swift in Sources */,
 				EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */,
+				EB2AABC02840A9A500A564A9 /* NetworkingProvider.swift in Sources */,
 				EBB3C4652818491100768C2E /* SelectorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +423,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EB2AABBC2840A82800A564A9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EB2AABBD2840A82800A564A9 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB2AABBC2840A82800A564A9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		EBB3C45B2816BD8800768C2E /* HorariosBus.xcdatamodeld */ = {
