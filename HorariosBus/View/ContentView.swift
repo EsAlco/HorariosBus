@@ -12,10 +12,11 @@ struct ContentView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    @FetchRequest(entity: BusStop.entity(), sortDescriptors: []) var busStops: FetchedResults<BusStop>
+    @FetchRequest(entity: Stop.entity(), sortDescriptors: []) var busStops: FetchedResults<Stop>
     
     @State private var searchText: String = ""
     @State var isInterBus = false
+    @State private var isDetailView = false
     
     
     var body: some View {
@@ -39,28 +40,25 @@ struct ContentView: View {
                     List{
                         ForEach (busStops) { busStop in
                         CellStopView(
-                            nameBus: busStop.name ?? "Desconocido",
-                            numberBus: Int(busStop.number))
-                        
+                            alias: busStop.alias ?? "Desconocido",
+                            numberStop: busStop.number ?? "")
+                        .onTapGesture {
+                            self.isDetailView.toggle()
+                        }
+                            NavigationLink("", destination: DetailStopView(
+                                                name: busStop.name ?? "",
+                                                numberCode: busStop.number ?? "",
+                                                zone: busStop.tariffZone ?? "",
+                                                lines: busStop.lines ?? "",
+                                                alias: busStop.alias ?? "",
+                                                feature: busStop.feature),
+                                           isActive: $isDetailView)
+                                .hidden()
                         }.onDelete(perform: removeBusStops)
                     }
                 }
             }
             .navigationTitle("Autobuses")
-            
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Add"){
-                        let busStop = BusStop(context: managedObjectContext)
-                        
-                        busStop.name = "Av Lazarejo / Santolina"
-                        busStop.number = 12345
-                        
-                        PersistenceController.shared.save()
-                    }
-                }
-            }
-            
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Número de parada")
         }
     }

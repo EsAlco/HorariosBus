@@ -9,9 +9,11 @@ import SwiftUI
 
 struct SearchBusStopView: View {
     
+    @Environment (\.presentationMode) var presentationMode
+    
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    @FetchRequest(entity: BusStop.entity(), sortDescriptors: []) var busStops: FetchedResults<BusStop>
+    @FetchRequest(entity: Stop.entity(), sortDescriptors: []) var busStops: FetchedResults<Stop>
     
     @State var searchTextNumberStop: String
     @State var isCharged = false
@@ -64,7 +66,7 @@ struct SearchBusStopView: View {
                                 TextField("Código de parada", text: $searchTextNumberStop)
                                     .keyboardType(.numberPad)
                                     .disableAutocorrection(true)
-                                NavigationLink("", destination: DetailStopView(name: nameStop, numberCode: numberCodeStop, zone: zoneStop, lines: linesStop), isActive: $isNavigation)
+                                NavigationLink("", destination: DetailStopView(name: nameStop, numberCode: numberCodeStop, zone: zoneStop, lines: linesStop, alias: "", feature: false), isActive: $isNavigation)
                                     .hidden()
                                 withAnimation{
                                         Text("Buscar")
@@ -123,7 +125,6 @@ struct SearchBusStopView: View {
                                 .font(.system(size: 12))
                             Spacer()
                         }
-                        Text(nameStop)
                     }
                     .padding(3)
                     .listRowSeparator(.hidden)
@@ -134,7 +135,18 @@ struct SearchBusStopView: View {
                         .progressViewStyle(CircularProgressViewStyle(tint: .green))
                 }
             }
-        }.navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Atrás"){
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("Interurbanos")
+                }
+            }
+        }
+        .navigationBarHidden(true)
     }
 }
 

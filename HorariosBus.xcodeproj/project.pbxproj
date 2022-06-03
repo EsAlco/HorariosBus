@@ -11,7 +11,8 @@
 		EB2AABBE2840A82800A564A9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EB2AABBD2840A82800A564A9 /* Alamofire */; };
 		EB2AABC02840A9A500A564A9 /* NetworkingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2AABBF2840A9A500A564A9 /* NetworkingProvider.swift */; };
 		EB2AABC52848D2C800A564A9 /* DetailStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2AABC42848D2C800A564A9 /* DetailStopView.swift */; };
-		EB3D7F56282E73FC00FBD3FA /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D7F55282E73FC00FBD3FA /* Stop.swift */; };
+		EB2AABCA28491D9C00A564A9 /* AddStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2AABC928491D9C00A564A9 /* AddStopViewModel.swift */; };
+		EB3D7F56282E73FC00FBD3FA /* StopValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D7F55282E73FC00FBD3FA /* StopValues.swift */; };
 		EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */; };
 		EBB3C4502816A25500768C2E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44F2816A25500768C2E /* ContentView.swift */; };
 		EBB3C4522816A25700768C2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB3C4512816A25700768C2E /* Assets.xcassets */; };
@@ -27,7 +28,8 @@
 		EB2AABBA2840986200A564A9 /* StopsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsResponse.swift; sourceTree = "<group>"; };
 		EB2AABBF2840A9A500A564A9 /* NetworkingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProvider.swift; sourceTree = "<group>"; };
 		EB2AABC42848D2C800A564A9 /* DetailStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStopView.swift; sourceTree = "<group>"; };
-		EB3D7F55282E73FC00FBD3FA /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		EB2AABC928491D9C00A564A9 /* AddStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStopViewModel.swift; sourceTree = "<group>"; };
+		EB3D7F55282E73FC00FBD3FA /* StopValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopValues.swift; sourceTree = "<group>"; };
 		EBB3C44A2816A25500768C2E /* HorariosBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorariosBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorariosBusApp.swift; sourceTree = "<group>"; };
 		EBB3C44F2816A25500768C2E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,10 +71,18 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		EB2AABC828491D3500A564A9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EB2AABC928491D9C00A564A9 /* AddStopViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		EB3D7F54282E73E200FBD3FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EB3D7F55282E73FC00FBD3FA /* Stop.swift */,
+				EB3D7F55282E73FC00FBD3FA /* StopValues.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -98,6 +108,7 @@
 			children = (
 				EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */,
 				EBB3C4602817153D00768C2E /* View */,
+				EB2AABC828491D3500A564A9 /* ViewModels */,
 				EB3D7F54282E73E200FBD3FA /* Model */,
 				EBB3C4612817155100768C2E /* CoreData */,
 				EB2AABB92840980600A564A9 /* Networking */,
@@ -212,7 +223,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB3D7F56282E73FC00FBD3FA /* Stop.swift in Sources */,
+				EB3D7F56282E73FC00FBD3FA /* StopValues.swift in Sources */,
+				EB2AABCA28491D9C00A564A9 /* AddStopViewModel.swift in Sources */,
 				EB2AABC52848D2C800A564A9 /* DetailStopView.swift in Sources */,
 				EB2AABBB2840986200A564A9 /* StopsResponse.swift in Sources */,
 				EBB3C46728185D5A00768C2E /* CellStopView.swift in Sources */,

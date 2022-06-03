@@ -23,9 +23,9 @@ struct PersistenceController {
         
         // Creación de 10 ejemplos
         for _ in 0..<10 {
-            let busStop = BusStop(context: controller.container.viewContext)
+            let busStop = Stop(context: controller.container.viewContext)
             busStop.name = "Av. Lazarejo"
-            busStop.number = 15678
+            busStop.number = "15678"
         }
         return controller
     }()
