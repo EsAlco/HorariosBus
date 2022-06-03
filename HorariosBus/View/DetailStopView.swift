@@ -14,59 +14,86 @@ struct DetailStopView: View {
     
     @Environment (\.presentationMode) var presentationMode
     
-    @State var name: String
+    @State var nameStop: String
     @State var numberCode: String
     @State var zone: String
     @State var lines: String
     @State var alias: String
     @State var feature: Bool
     
-    @State private var showAlertAlias = false
+    @State private var showDeleteFeature = false
+    @State private var showingAlert = false
+    @State private var isCharged = false
     
     var stopId: NSManagedObjectID?
     let viewModel = AddStopViewModel()
     
     var body: some View {
         NavigationView{
-            VStack{
-                HStack{
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(.green)
-                        .frame(width: 60, height: 60)
-                        .overlay(
-                            Image(systemName: "bus.fill")
-                                .scaleEffect(2)
-                        )
+            ZStack{
+                VStack{
+                    HStack{
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(.green)
+                            .frame(width: 60, height: 60)
+                            .overlay(
+                                Image(systemName: "bus.fill")
+                                    .scaleEffect(2)
+                            )
+                        
+                        VStack(alignment: .leading){
+                            Text(nameStop)
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                            Text(numberCode)
+                                .font(.system(.headline, design: .rounded))
+                            HStack{
+                                Text("Zona tarifaria: \(zone)")
+                                    .font(.system(.subheadline, design: .rounded))
+                            }
+                        }.padding(.leading, 5)
+                    }
+                    .padding()
+                    .background(.green.opacity(0.4))
+                    .cornerRadius(10)
                     
-                    VStack(alignment: .leading){
-                        Text(name)
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                        Text(numberCode)
-                            .font(.system(.headline, design: .rounded))
-                        HStack{
-                            Text("Zona tarifaria: \(zone)")
-                                .font(.system(.subheadline, design: .rounded))
+                    Spacer()
+                    
+                    List{
+                        ForEach (lines.replacingOccurrences(of: ",", with: "").components(separatedBy: " "), id:\.self) { line in
+                            Text(line)
                         }
-                    }.padding(.leading, 5)
+                    }.refreshable {
+                        NetworkingProvider.shared.getStop(numberStop: numberCode) { stopResponse in
+                            for attributes in stopResponse.features{
+                                nameStop = attributes.name ?? ""
+                                numberCode = attributes.numberCode ?? ""
+                                zone = attributes.zone ?? ""
+                                lines = attributes.lines ?? ""
+                            }
+                                        
+                        } failure: { error in
+                            self.showingAlert.toggle()
+                        }
+                    }
                 }
-                
-                .alert("Guardar como Favorita", isPresented: $showAlertAlias, actions: {
-                    Button("Guardar"){}
-                    Button("Cancelar", role: .cancel){
-                        alias = ""
-                    }
-                }, message: {
-                    VStack{
-                        Text("Dale un nombre a tu parada")
-                        TextField("", text: $alias)
-                    }
-                })
-                
-                .padding()
-                .background(.green.opacity(0.4))
-                .cornerRadius(10)
-                Spacer()
+                if isCharged {
+                    ProgressView()
+                        .scaleEffect(2)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .green))
+                }
             }
+            .alert("Error al cargar la parada", isPresented: $showingAlert) {
+                Button("OK", role: .cancel){}
+            }
+            .alert("Eliminar como favorita", isPresented: $showDeleteFeature, actions: {
+                Button("Sí"){
+                    self.feature = false
+                    removeStops(predicate: numberCode)
+                }
+                Button("No", role: .cancel){}
+            }, message: {
+                Text("¿Seguro que quieres eliminar de favoritos esta parada?")
+            })
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Atrás"){
@@ -75,42 +102,82 @@ struct DetailStopView: View {
                 }
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button{
-                        //TODO: recargar la vista
-                    }label: {
+                        self.isCharged.toggle()
+                        NetworkingProvider.shared.getStop(numberStop: numberCode) { stopResponse in
+                            self.isCharged.toggle()
+                            for attributes in stopResponse.features{
+                                nameStop = attributes.name ?? ""
+                                numberCode = attributes.numberCode ?? ""
+                                zone = attributes.zone ?? ""
+                                lines = attributes.lines ?? ""
+                            }
+                                        
+                        } failure: { error in
+                            self.isCharged.toggle()
+                            self.showingAlert.toggle()
+                        }                    }label: {
                         Image(systemName: "arrow.clockwise")
                     }
                     Button{
-                        self.feature.toggle()
-                        if feature {
-                            alertTextField(title: "Guardar como favorita", message: "Escribe un nombre para esta parada", hintText: name, primaryTitle: "Guardar", secondaryTitle: "Cancelar") { text in
+                        if !feature {
+                            alertTextField(title: "Guardar como favorita", message: "Escribe un nombre para esta parada", hintText: nameStop, primaryTitle: "Guardar", secondaryTitle: "Cancelar") { text in
+                                
+                                    self.feature = true
                                
-                                let values = StopValues(name: name, number: numberCode, tariffZone: zone, lines: lines, alias: text, feature: feature)
+                                let values = StopValues(name: nameStop, number: numberCode, tariffZone: zone, lines: lines, alias: text == "" ? nameStop : text, feature: feature)
                                 
                                 viewModel.saveStop(stopId: stopId, with: values, in: managedObjectContext)
-                                } secondaryAction: {
-                                    print("cancel")
-                                }
+                                } secondaryAction: {}
                         }
-                        if !feature {
-                            //
+                        if feature {
+                            self.showDeleteFeature.toggle()
                         }
-                        
-                        
-                        
                     }label: {
                         Image(systemName: feature ? "heart.fill" : "heart")
                     }
-
                 }
             }
         }
         .navigationBarHidden(true)
+        
+        .onAppear{
+            self.isCharged.toggle()
+            NetworkingProvider.shared.getStop(numberStop: numberCode) { stopResponse in
+                self.isCharged.toggle()
+                for attributes in stopResponse.features{
+                    nameStop = attributes.name ?? ""
+                    numberCode = attributes.numberCode ?? ""
+                    zone = attributes.zone ?? ""
+                    lines = attributes.lines ?? ""
+                }
+                            
+            } failure: { error in
+                self.isCharged.toggle()
+                self.showingAlert.toggle()
+            }
+        }
+    }
+    
+    func removeStops(predicate: String) {
+    
+        let fetchRequest: NSFetchRequest<Stop>
+        fetchRequest = Stop.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "number == %@", predicate)
+        fetchRequest.includesPropertyValues = false
+        let context = managedObjectContext
+        if let busStops = try? context.fetch(fetchRequest){
+            for busStop in busStops {
+                context.delete(busStop)
+            }
+        }
+    
+        PersistenceController.shared.save()
     }
 }
 
 struct DetailStopView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailStopView(name: "Av Lazarejo - C/Santolina", numberCode: "12345", zone: "B2", lines: "628, L1", alias: "", feature: false)
+        DetailStopView(nameStop: "Av Lazarejo - C/Santolina", numberCode: "12345", zone: "B2", lines: "628, L1", alias: "", feature: false)
     }
 }
 

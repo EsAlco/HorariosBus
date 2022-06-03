@@ -19,6 +19,9 @@ struct ContentView: View {
     @State private var isDetailView = false
     
     
+    @State var showingAlert = false
+    
+    
     var body: some View {
         NavigationView{
             Form{
@@ -39,21 +42,23 @@ struct ContentView: View {
                 Section {
                     List{
                         ForEach (busStops) { busStop in
-                        CellStopView(
-                            alias: busStop.alias ?? "Desconocido",
-                            numberStop: busStop.number ?? "")
-                        .onTapGesture {
-                            self.isDetailView.toggle()
-                        }
-                            NavigationLink("", destination: DetailStopView(
-                                                name: busStop.name ?? "",
+                            HStack{
+                                CellStopView(
+                                    alias: busStop.alias ?? "Desconocido",
+                                    numberStop: busStop.number ?? "")
+                                .onTapGesture {
+                                    self.isDetailView.toggle()
+                                }
+                                NavigationLink("", destination: DetailStopView(
+                                                nameStop: busStop.name ?? "",
                                                 numberCode: busStop.number ?? "",
                                                 zone: busStop.tariffZone ?? "",
                                                 lines: busStop.lines ?? "",
                                                 alias: busStop.alias ?? "",
                                                 feature: busStop.feature),
                                            isActive: $isDetailView)
-                                .hidden()
+                                    .hidden()
+                            }
                         }.onDelete(perform: removeBusStops)
                     }
                 }
