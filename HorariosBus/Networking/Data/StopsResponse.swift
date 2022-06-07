@@ -71,40 +71,40 @@ struct StopsResponse: Decodable {
     var features: [Features]
 
     struct Features: Decodable {
-        var numberCode: String?
-        var name: String?
-        var zone: String?
-        var lines: String?
-        var xGeometry: Double?
-        var yGeometry: Double?
+        var numberStop: String?
+        var nameStop: String?
+        var tariffZoneStop: String?
+        var linesStop: String?
+        var xGeometryStop: Double?
+        var yGeometryStop: Double?
 
         enum FeaturesKeys: String, CodingKey {
             case attributes
             case geometry
         }
         enum AttributesKeys: String, CodingKey {
-            case numberCode = "CODIGOESTACION"
-            case name = "DENOMINACION"
-            case zone = "CORONATARIFARIA"
-            case lines = "LINEAS"
+            case numberStop = "CODIGOESTACION"
+            case nameStop = "DENOMINACION"
+            case tariffZoneStop = "CORONATARIFARIA"
+            case linesStop = "LINEAS"
         }
 
         enum GeometryKeys: String, CodingKey {
-            case xGeometry = "x"
-            case yGeometry = "y"
+            case xGeometryStop = "x"
+            case yGeometryStop = "y"
         }
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: FeaturesKeys.self)
 
             let attributesContainer = try container.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
-            self.numberCode = try attributesContainer.decode(String.self, forKey: .numberCode)
-            self.name = try attributesContainer.decode(String.self, forKey: .name)
-            self.zone = try attributesContainer.decode(String.self, forKey: .zone)
-            self.lines = try attributesContainer.decode(String.self, forKey: .lines)
+            self.numberStop = try attributesContainer.decode(String.self, forKey: .numberStop)
+            self.nameStop = try attributesContainer.decode(String.self, forKey: .nameStop)
+            self.tariffZoneStop = try attributesContainer.decode(String.self, forKey: .tariffZoneStop)
+            self.linesStop = try attributesContainer.decode(String.self, forKey: .linesStop)
 
             let geometryContainer = try container.nestedContainer(keyedBy: GeometryKeys.self, forKey: .geometry)
-            self.xGeometry = try geometryContainer.decode(Double.self, forKey: .xGeometry)
-            self.yGeometry = try geometryContainer.decode(Double.self, forKey: .yGeometry)
+            self.xGeometryStop = try geometryContainer.decode(Double.self, forKey: .xGeometryStop)
+            self.yGeometryStop = try geometryContainer.decode(Double.self, forKey: .yGeometryStop)
         }
     }
 }

@@ -44,18 +44,18 @@ struct ContentView: View {
                         ForEach (busStops) { busStop in
                             HStack{
                                 CellStopView(
-                                    alias: busStop.alias ?? "Desconocido",
+                                    aliasStop: busStop.alias ?? "Desconocido",
                                     numberStop: busStop.number ?? "")
                                 .onTapGesture {
                                     self.isDetailView.toggle()
                                 }
                                 NavigationLink("", destination: DetailStopView(
                                                 nameStop: busStop.name ?? "",
-                                                numberCode: busStop.number ?? "",
-                                                zone: busStop.tariffZone ?? "",
-                                                lines: busStop.lines ?? "",
-                                                alias: busStop.alias ?? "",
-                                                feature: busStop.feature),
+                                                numberStop: busStop.number ?? "",
+                                                tariffZoneStop: busStop.tariffZone ?? "",
+                                                linesStop: busStop.lines ?? "",
+                                                aliasStop: busStop.alias ?? "",
+                                                featureStop: busStop.feature),
                                            isActive: $isDetailView)
                                     .hidden()
                             }

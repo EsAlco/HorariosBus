@@ -18,6 +18,7 @@ struct SearchBusStopView: View {
     @State var searchTextNumberStop: String
     @State var showingAlertEmpty = false
     @State var isNavigation = false
+    @State var showingMap = false
     
     var body: some View {
         NavigationView{
@@ -36,7 +37,7 @@ struct SearchBusStopView: View {
                             }
                             Spacer()
                             Button{
-                                //TODO: Busqueda por mapa
+                                self.showingMap.toggle()
                             }label: {
                                 Image(systemName: "map.circle.fill")
                                     .foregroundColor(.green)
@@ -59,7 +60,7 @@ struct SearchBusStopView: View {
                                 TextField("Código de parada", text: $searchTextNumberStop)
                                     .keyboardType(.numberPad)
                                     .disableAutocorrection(true)
-                                NavigationLink("", destination: DetailStopView(nameStop: "", numberCode: searchTextNumberStop, zone: "", lines: "", alias: "", feature: false), isActive: $isNavigation)
+                                NavigationLink("", destination: DetailStopView(nameStop: "", numberStop: "", tariffZoneStop: "", linesStop: "", aliasStop: "", featureStop: false), isActive: $isNavigation)
                                     .hidden()
                                 withAnimation{
                                         Text("Buscar")
@@ -113,6 +114,9 @@ struct SearchBusStopView: View {
                 ToolbarItem(placement: .principal) {
                     Text("Interurbanos")
                 }
+            }
+            .sheet(isPresented: $showingMap) {
+                MapView()
             }
         }
         .navigationBarHidden(true)

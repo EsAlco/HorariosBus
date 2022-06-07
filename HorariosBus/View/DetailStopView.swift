@@ -15,11 +15,11 @@ struct DetailStopView: View {
     @Environment (\.presentationMode) var presentationMode
     
     @State var nameStop: String
-    @State var numberCode: String
-    @State var zone: String
-    @State var lines: String
-    @State var alias: String
-    @State var feature: Bool
+    @State var numberStop: String
+    @State var tariffZoneStop: String
+    @State var linesStop: String
+    @State var aliasStop: String
+    @State var featureStop: Bool
     
     @State private var showDeleteFeature = false
     @State private var showingAlert = false
@@ -44,10 +44,10 @@ struct DetailStopView: View {
                         VStack(alignment: .leading){
                             Text(nameStop)
                                 .font(.system(size: 20, weight: .bold, design: .rounded))
-                            Text(numberCode)
+                            Text(numberStop)
                                 .font(.system(.headline, design: .rounded))
                             HStack{
-                                Text("Zona tarifaria: \(zone)")
+                                Text("Zona tarifaria: \(tariffZoneStop)")
                                     .font(.system(.subheadline, design: .rounded))
                             }
                         }.padding(.leading, 5)
@@ -59,16 +59,16 @@ struct DetailStopView: View {
                     Spacer()
                     
                     List{
-                        ForEach (lines.replacingOccurrences(of: ",", with: "").components(separatedBy: " "), id:\.self) { line in
+                        ForEach (linesStop.replacingOccurrences(of: ",", with: "").components(separatedBy: " "), id:\.self) { line in
                             Text(line)
                         }
                     }.refreshable {
-                        NetworkingProvider.shared.getStop(numberStop: numberCode) { stopResponse in
+                        NetworkingProvider.shared.getStop(numberStop: numberStop) { stopResponse in
                             for attributes in stopResponse.features{
-                                nameStop = attributes.name ?? ""
-                                numberCode = attributes.numberCode ?? ""
-                                zone = attributes.zone ?? ""
-                                lines = attributes.lines ?? ""
+                                nameStop = attributes.nameStop ?? ""
+                                numberStop = attributes.numberStop ?? ""
+                                tariffZoneStop = attributes.tariffZoneStop ?? ""
+                                linesStop = attributes.linesStop ?? ""
                             }
                                         
                         } failure: { error in
@@ -87,8 +87,8 @@ struct DetailStopView: View {
             }
             .alert("Eliminar como favorita", isPresented: $showDeleteFeature, actions: {
                 Button("Sí"){
-                    self.feature = false
-                    removeStops(predicate: numberCode)
+                    self.featureStop = false
+                    removeStops(predicate: numberStop)
                 }
                 Button("No", role: .cancel){}
             }, message: {
@@ -103,13 +103,13 @@ struct DetailStopView: View {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button{
                         self.isCharged.toggle()
-                        NetworkingProvider.shared.getStop(numberStop: numberCode) { stopResponse in
+                        NetworkingProvider.shared.getStop(numberStop: numberStop) { stopResponse in
                             self.isCharged.toggle()
                             for attributes in stopResponse.features{
-                                nameStop = attributes.name ?? ""
-                                numberCode = attributes.numberCode ?? ""
-                                zone = attributes.zone ?? ""
-                                lines = attributes.lines ?? ""
+                                nameStop = attributes.nameStop ?? ""
+                                numberStop = attributes.numberStop ?? ""
+                                tariffZoneStop = attributes.tariffZoneStop ?? ""
+                                linesStop = attributes.linesStop ?? ""
                             }
                                         
                         } failure: { error in
@@ -119,21 +119,21 @@ struct DetailStopView: View {
                         Image(systemName: "arrow.clockwise")
                     }
                     Button{
-                        if !feature {
+                        if !featureStop {
                             alertTextField(title: "Guardar como favorita", message: "Escribe un nombre para esta parada", hintText: nameStop, primaryTitle: "Guardar", secondaryTitle: "Cancelar") { text in
                                 
-                                    self.feature = true
+                                    self.featureStop = true
                                
-                                let values = StopValues(name: nameStop, number: numberCode, tariffZone: zone, lines: lines, alias: text == "" ? nameStop : text, feature: feature)
+                                let values = StopValues(name: nameStop, number: numberStop, tariffZone: tariffZoneStop, lines: linesStop, alias: text == "" ? nameStop : text, feature: featureStop)
                                 
                                 viewModel.saveStop(stopId: stopId, with: values, in: managedObjectContext)
                                 } secondaryAction: {}
                         }
-                        if feature {
+                        if featureStop {
                             self.showDeleteFeature.toggle()
                         }
                     }label: {
-                        Image(systemName: feature ? "heart.fill" : "heart")
+                        Image(systemName: featureStop ? "heart.fill" : "heart")
                     }
                 }
             }
@@ -142,13 +142,13 @@ struct DetailStopView: View {
         
         .onAppear{
             self.isCharged.toggle()
-            NetworkingProvider.shared.getStop(numberStop: numberCode) { stopResponse in
+            NetworkingProvider.shared.getStop(numberStop: numberStop) { stopResponse in
                 self.isCharged.toggle()
                 for attributes in stopResponse.features{
-                    nameStop = attributes.name ?? ""
-                    numberCode = attributes.numberCode ?? ""
-                    zone = attributes.zone ?? ""
-                    lines = attributes.lines ?? ""
+                    nameStop = attributes.nameStop ?? ""
+                    numberStop = attributes.numberStop ?? ""
+                    tariffZoneStop = attributes.tariffZoneStop ?? ""
+                    linesStop = attributes.linesStop ?? ""
                 }
                             
             } failure: { error in
@@ -177,7 +177,7 @@ struct DetailStopView: View {
 
 struct DetailStopView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailStopView(nameStop: "Av Lazarejo - C/Santolina", numberCode: "12345", zone: "B2", lines: "628, L1", alias: "", feature: false)
+        DetailStopView(nameStop: "Av Lazarejo - C/Santolina", numberStop: "12345", tariffZoneStop: "B2", linesStop: "628, L1", aliasStop: "", featureStop: false)
     }
 }
 

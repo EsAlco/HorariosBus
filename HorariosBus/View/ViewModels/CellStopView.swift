@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CellStopView: View {
     
-    @State var alias: String
+    @State var aliasStop: String
     @State var numberStop: String
     
     var body: some View {
@@ -23,7 +23,7 @@ struct CellStopView: View {
                 )
             
             VStack(alignment: .leading, spacing: 2){
-                Text(alias)
+                Text(aliasStop)
                     .font(.system(.callout, design: .rounded))
                 Text(numberStop)
                     .font(.system(size: 12, weight: .light, design: .rounded))
@@ -34,6 +34,6 @@ struct CellStopView: View {
 
 struct CellStopView_Previews: PreviewProvider {
     static var previews: some View {
-        CellStopView(alias: "Av. Lazarejo/Santolina", numberStop: "15213")
+        CellStopView(aliasStop: "Av. Lazarejo/Santolina", numberStop: "15213")
     }
 }
