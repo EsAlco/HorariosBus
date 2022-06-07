@@ -13,8 +13,9 @@
 		EB2AABC02840A9A500A564A9 /* NetworkingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2AABBF2840A9A500A564A9 /* NetworkingProvider.swift */; };
 		EB2AABC52848D2C800A564A9 /* DetailStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2AABC42848D2C800A564A9 /* DetailStopView.swift */; };
 		EB2AABCA28491D9C00A564A9 /* AddStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2AABC928491D9C00A564A9 /* AddStopViewModel.swift */; };
-		EB3B17BA284F55F800F53770 /* AllStopResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B17B9284F55F700F53770 /* AllStopResponse.swift */; };
+		EB3B17BC284FAEF700F53770 /* MapCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B17BB284FAEF700F53770 /* MapCellView.swift */; };
 		EB3D7F56282E73FC00FBD3FA /* StopValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D7F55282E73FC00FBD3FA /* StopValues.swift */; };
+		EB3DCCE2284FF4210083E1C6 /* LocationValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3DCCE1284FF4210083E1C6 /* LocationValues.swift */; };
 		EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */; };
 		EBB3C4502816A25500768C2E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44F2816A25500768C2E /* ContentView.swift */; };
 		EBB3C4522816A25700768C2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB3C4512816A25700768C2E /* Assets.xcassets */; };
@@ -34,8 +35,9 @@
 		EB2AABBF2840A9A500A564A9 /* NetworkingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProvider.swift; sourceTree = "<group>"; };
 		EB2AABC42848D2C800A564A9 /* DetailStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStopView.swift; sourceTree = "<group>"; };
 		EB2AABC928491D9C00A564A9 /* AddStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStopViewModel.swift; sourceTree = "<group>"; };
-		EB3B17B9284F55F700F53770 /* AllStopResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStopResponse.swift; sourceTree = "<group>"; };
+		EB3B17BB284FAEF700F53770 /* MapCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCellView.swift; sourceTree = "<group>"; };
 		EB3D7F55282E73FC00FBD3FA /* StopValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopValues.swift; sourceTree = "<group>"; };
+		EB3DCCE1284FF4210083E1C6 /* LocationValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationValues.swift; sourceTree = "<group>"; };
 		EBB3C44A2816A25500768C2E /* HorariosBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorariosBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorariosBusApp.swift; sourceTree = "<group>"; };
 		EBB3C44F2816A25500768C2E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				EB2AABBA2840986200A564A9 /* StopsResponse.swift */,
-				EB3B17B9284F55F700F53770 /* AllStopResponse.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -94,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				EB3D7F55282E73FC00FBD3FA /* StopValues.swift */,
+				EB3DCCE1284FF4210083E1C6 /* LocationValues.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -103,6 +105,7 @@
 			children = (
 				EBB3C46628185D5A00768C2E /* CellStopView.swift */,
 				EBB3C4642818491100768C2E /* SelectorView.swift */,
+				EB3B17BB284FAEF700F53770 /* MapCellView.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -250,17 +253,18 @@
 				EB2AABCA28491D9C00A564A9 /* AddStopViewModel.swift in Sources */,
 				EB2AABC52848D2C800A564A9 /* DetailStopView.swift in Sources */,
 				EB2AABBB2840986200A564A9 /* StopsResponse.swift in Sources */,
-				EB3B17BA284F55F800F53770 /* AllStopResponse.swift in Sources */,
 				EB22D66E284BB7AD00C10344 /* MapView.swift in Sources */,
 				EBB3C46728185D5A00768C2E /* CellStopView.swift in Sources */,
 				EBB3C45D2816BD8800768C2E /* HorariosBus.xcdatamodeld in Sources */,
 				EBB3C45F2816C16400768C2E /* PersistenceController.swift in Sources */,
+				EB3DCCE2284FF4210083E1C6 /* LocationValues.swift in Sources */,
 				EBB3C4502816A25500768C2E /* ContentView.swift in Sources */,
 				EBB3C4632817159400768C2E /* SearchBusStopView.swift in Sources */,
 				EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */,
 				EBD14206284E1C1500402170 /* LocationViewModel.swift in Sources */,
 				EB2AABC02840A9A500A564A9 /* NetworkingProvider.swift in Sources */,
 				EBB3C4652818491100768C2E /* SelectorView.swift in Sources */,
+				EB3B17BC284FAEF700F53770 /* MapCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

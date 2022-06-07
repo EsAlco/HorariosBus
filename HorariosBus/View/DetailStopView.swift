@@ -67,7 +67,7 @@ struct DetailStopView: View {
                             for attributes in stopResponse.features{
                                 nameStop = attributes.nameStop ?? ""
                                 numberStop = attributes.numberStop ?? ""
-                                tariffZoneStop = attributes.tariffZoneStop ?? ""
+                             //   tariffZoneStop = attributes.tariffZoneStop ?? ""
                                 linesStop = attributes.linesStop ?? ""
                             }
                                         
@@ -108,7 +108,7 @@ struct DetailStopView: View {
                             for attributes in stopResponse.features{
                                 nameStop = attributes.nameStop ?? ""
                                 numberStop = attributes.numberStop ?? ""
-                                tariffZoneStop = attributes.tariffZoneStop ?? ""
+                               // tariffZoneStop = attributes.tariffZoneStop ?? ""
                                 linesStop = attributes.linesStop ?? ""
                             }
                                         
@@ -147,7 +147,7 @@ struct DetailStopView: View {
                 for attributes in stopResponse.features{
                     nameStop = attributes.nameStop ?? ""
                     numberStop = attributes.numberStop ?? ""
-                    tariffZoneStop = attributes.tariffZoneStop ?? ""
+                  //  tariffZoneStop = attributes.tariffZoneStop ?? ""
                     linesStop = attributes.linesStop ?? ""
                 }
                             

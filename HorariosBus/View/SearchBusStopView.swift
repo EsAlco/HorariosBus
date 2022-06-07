@@ -60,7 +60,7 @@ struct SearchBusStopView: View {
                                 TextField("Código de parada", text: $searchTextNumberStop)
                                     .keyboardType(.numberPad)
                                     .disableAutocorrection(true)
-                                NavigationLink("", destination: DetailStopView(nameStop: "", numberStop: "", tariffZoneStop: "", linesStop: "", aliasStop: "", featureStop: false), isActive: $isNavigation)
+                                NavigationLink("", destination: DetailStopView(nameStop: "", numberStop: searchTextNumberStop, tariffZoneStop: "", linesStop: "", aliasStop: "", featureStop: false), isActive: $isNavigation)
                                     .hidden()
                                 withAnimation{
                                         Text("Buscar")
@@ -116,7 +116,7 @@ struct SearchBusStopView: View {
                 }
             }
             .sheet(isPresented: $showingMap) {
-                MapView()
+                MapView(locations: [Location(nameStop: "", numberStop: "", linesStop: "", xGeometryStop: 0.0, yGeometryStop: 0.0)])
             }
         }
         .navigationBarHidden(true)

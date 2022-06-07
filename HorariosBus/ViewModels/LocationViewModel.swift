@@ -12,11 +12,11 @@ import MapKit
 
 class LocationViewModel: NSObject, ObservableObject {
     private struct DefaultRegion {
-        static let latitude = 40.4165
-        static let longitude = -3.70256
+        static let latitude = 40.4929200
+        static let longitude = -3.8737100
     }
     private struct Span {
-        static let delta = 0.1
+        static let delta = 0.05
     }
     
     private let locationManager: CLLocationManager = .init()

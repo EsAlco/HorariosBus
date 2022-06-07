@@ -7,10 +7,6 @@
 
 import Foundation
 
-
-
-
-
 //
 //struct AllStopsResponse: Decodable {
 //    var features: [[Features]]

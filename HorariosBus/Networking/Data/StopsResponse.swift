@@ -26,44 +26,9 @@ import Foundation
 //         "geometry":{
 //            "x":421343.26680000033,
 //            "y":4485591.7861
-//         }
+//         }/Users/esther/Desktop/Proyectos Xcode/AppPersonales/HorariosBus/HorariosBus/Networking/Data/StopsResponse.swift
 //      }
 //   ]
-//}
-//
-//
-//struct StopsResponse: Decodable {
-//    var features: [Features]
-//}
-//struct Features: Decodable {
-//    var attributes: Attributes
-//    var geometry: Geometry
-//}
-//struct Attributes: Decodable {
-//    var numberCode: String?
-//    var name: String?
-//    var zone: String?
-//    var lines: String?
-//
-//    enum CodingKeys: String, CodingKey {
-//        case numberCode = "CODIGOESTACION"
-//        case name = "DENOMINACION"
-//        case zone = "CORONATARIFARIA"
-//        case lines = "LINEAS"
-//    }
-//    init(from decoder: Decoder) throws{
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//
-//        self.numberCode = try values.decode(String.self, forKey: .numberCode)
-//        self.name = try values.decode(String.self, forKey: .name)
-//        self.zone = try values.decode(String.self, forKey: .zone)
-//        self.lines = try values.decode(String.self, forKey: .lines)
-//    }
-//}
-//
-//struct Geometry: Decodable {
-//    var x: Double?
-//    var y: Double?
 //}
 
 
@@ -73,7 +38,7 @@ struct StopsResponse: Decodable {
     struct Features: Decodable {
         var numberStop: String?
         var nameStop: String?
-        var tariffZoneStop: String?
+       // var tariffZoneStop: String?
         var linesStop: String?
         var xGeometryStop: Double?
         var yGeometryStop: Double?
@@ -85,7 +50,7 @@ struct StopsResponse: Decodable {
         enum AttributesKeys: String, CodingKey {
             case numberStop = "CODIGOESTACION"
             case nameStop = "DENOMINACION"
-            case tariffZoneStop = "CORONATARIFARIA"
+           // case tariffZoneStop = "CORONATARIFARIA"
             case linesStop = "LINEAS"
         }
 
@@ -99,7 +64,7 @@ struct StopsResponse: Decodable {
             let attributesContainer = try container.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
             self.numberStop = try attributesContainer.decode(String.self, forKey: .numberStop)
             self.nameStop = try attributesContainer.decode(String.self, forKey: .nameStop)
-            self.tariffZoneStop = try attributesContainer.decode(String.self, forKey: .tariffZoneStop)
+           // self.tariffZoneStop = try attributesContainer.decode(String.self, forKey: .tariffZoneStop)
             self.linesStop = try attributesContainer.decode(String.self, forKey: .linesStop)
 
             let geometryContainer = try container.nestedContainer(keyedBy: GeometryKeys.self, forKey: .geometry)
