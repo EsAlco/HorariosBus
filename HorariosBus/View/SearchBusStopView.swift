@@ -116,7 +116,7 @@ struct SearchBusStopView: View {
                 }
             }
             .sheet(isPresented: $showingMap) {
-                MapView(locations: [Location(nameStop: "", numberStop: "", linesStop: "", xGeometryStop: 0.0, yGeometryStop: 0.0)])
+                MapView(locations: [Location(nameStop: "", numberStop: "", tariffZoneStop: "", linesStop: "", xGeometryStop: 0.0, yGeometryStop: 0.0)])
             }
         }
         .navigationBarHidden(true)

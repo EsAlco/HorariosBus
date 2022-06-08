@@ -11,7 +11,7 @@ struct Location: Identifiable {
     let id = UUID()
     let nameStop: String
     let numberStop: String
-//    let tariffZoneStop: String
+    let tariffZoneStop: String
     let linesStop: String
     let xGeometryStop: Double
     let yGeometryStop: Double

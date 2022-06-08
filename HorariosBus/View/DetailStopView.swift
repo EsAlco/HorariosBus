@@ -65,10 +65,10 @@ struct DetailStopView: View {
                     }.refreshable {
                         NetworkingProvider.shared.getStop(numberStop: numberStop) { stopResponse in
                             for attributes in stopResponse.features{
-                                nameStop = attributes.nameStop ?? ""
-                                numberStop = attributes.numberStop ?? ""
-                             //   tariffZoneStop = attributes.tariffZoneStop ?? ""
-                                linesStop = attributes.linesStop ?? ""
+                                nameStop = attributes.nameStop
+                                numberStop = attributes.numberStop
+                                tariffZoneStop = attributes.tariffZoneStop
+                                linesStop = attributes.linesStop
                             }
                                         
                         } failure: { error in
@@ -106,10 +106,10 @@ struct DetailStopView: View {
                         NetworkingProvider.shared.getStop(numberStop: numberStop) { stopResponse in
                             self.isCharged.toggle()
                             for attributes in stopResponse.features{
-                                nameStop = attributes.nameStop ?? ""
-                                numberStop = attributes.numberStop ?? ""
-                               // tariffZoneStop = attributes.tariffZoneStop ?? ""
-                                linesStop = attributes.linesStop ?? ""
+                                nameStop = attributes.nameStop
+                                numberStop = attributes.numberStop
+                                tariffZoneStop = attributes.tariffZoneStop
+                                linesStop = attributes.linesStop
                             }
                                         
                         } failure: { error in
@@ -145,10 +145,10 @@ struct DetailStopView: View {
             NetworkingProvider.shared.getStop(numberStop: numberStop) { stopResponse in
                 self.isCharged.toggle()
                 for attributes in stopResponse.features{
-                    nameStop = attributes.nameStop ?? ""
-                    numberStop = attributes.numberStop ?? ""
-                  //  tariffZoneStop = attributes.tariffZoneStop ?? ""
-                    linesStop = attributes.linesStop ?? ""
+                    nameStop = attributes.nameStop
+                    numberStop = attributes.numberStop
+                    tariffZoneStop = attributes.tariffZoneStop
+                    linesStop = attributes.linesStop
                 }
                             
             } failure: { error in

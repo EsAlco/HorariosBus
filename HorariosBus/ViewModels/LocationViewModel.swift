@@ -16,7 +16,7 @@ class LocationViewModel: NSObject, ObservableObject {
         static let longitude = -3.8737100
     }
     private struct Span {
-        static let delta = 0.05
+        static let delta = 0.001
     }
     
     private let locationManager: CLLocationManager = .init()

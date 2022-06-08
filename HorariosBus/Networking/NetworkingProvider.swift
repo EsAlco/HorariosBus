@@ -30,7 +30,7 @@ final class NetworkingProvider {
     }
     
     func getAllStops(success: @escaping (_ allStopsResponse: StopsResponse) -> (), failure: @escaping (_ error: Error?) -> ()) {
-        let url = "\(kBaseUrl)where=1%3D1&outFields=CODIGOESTACION,DENOMINACION,LINEAS&outSR=4326&f=json"
+        let url = "\(kBaseUrl)where=1%3D1&outFields=CODIGOESTACION,DENOMINACION,CORONATARIFARIA,LINEAS&outSR=4326&f=json"
         
         AF.request(url, method: .get).validate(statusCode: kStatusOk).responseDecodable (of: StopsResponse.self) {
             response in

@@ -36,12 +36,12 @@ struct StopsResponse: Decodable {
     var features: [Features]
 
     struct Features: Decodable {
-        var numberStop: String?
-        var nameStop: String?
-       // var tariffZoneStop: String?
-        var linesStop: String?
-        var xGeometryStop: Double?
-        var yGeometryStop: Double?
+        var numberStop: String
+        var nameStop: String
+        var tariffZoneStop: String
+        var linesStop: String
+        var xGeometryStop: Double
+        var yGeometryStop: Double
 
         enum FeaturesKeys: String, CodingKey {
             case attributes
@@ -50,7 +50,7 @@ struct StopsResponse: Decodable {
         enum AttributesKeys: String, CodingKey {
             case numberStop = "CODIGOESTACION"
             case nameStop = "DENOMINACION"
-           // case tariffZoneStop = "CORONATARIFARIA"
+            case tariffZoneStop = "CORONATARIFARIA"
             case linesStop = "LINEAS"
         }
 
@@ -64,12 +64,18 @@ struct StopsResponse: Decodable {
             let attributesContainer = try container.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
             self.numberStop = try attributesContainer.decode(String.self, forKey: .numberStop)
             self.nameStop = try attributesContainer.decode(String.self, forKey: .nameStop)
-           // self.tariffZoneStop = try attributesContainer.decode(String.self, forKey: .tariffZoneStop)
             self.linesStop = try attributesContainer.decode(String.self, forKey: .linesStop)
 
             let geometryContainer = try container.nestedContainer(keyedBy: GeometryKeys.self, forKey: .geometry)
             self.xGeometryStop = try geometryContainer.decode(Double.self, forKey: .xGeometryStop)
             self.yGeometryStop = try geometryContainer.decode(Double.self, forKey: .yGeometryStop)
+            
+            if let tariffZoneStop = try attributesContainer.decodeIfPresent(String.self, forKey: .tariffZoneStop) {
+                self.tariffZoneStop = tariffZoneStop
+            } else {
+                self.tariffZoneStop = ""
+            }
+            
         }
     }
 }
