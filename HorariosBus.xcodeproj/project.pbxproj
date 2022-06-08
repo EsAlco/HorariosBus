@@ -16,6 +16,8 @@
 		EB3B17BC284FAEF700F53770 /* MapCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B17BB284FAEF700F53770 /* MapCellView.swift */; };
 		EB3D7F56282E73FC00FBD3FA /* StopValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D7F55282E73FC00FBD3FA /* StopValues.swift */; };
 		EB3DCCE2284FF4210083E1C6 /* LocationValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3DCCE1284FF4210083E1C6 /* LocationValues.swift */; };
+		EB3DCCE82850C33B0083E1C6 /* WrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3DCCE72850C33B0083E1C6 /* WrapView.swift */; };
+		EB3DCCEA28515D020083E1C6 /* Location.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB3DCCE928515D020083E1C6 /* Location.bundle */; };
 		EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */; };
 		EBB3C4502816A25500768C2E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44F2816A25500768C2E /* ContentView.swift */; };
 		EBB3C4522816A25700768C2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB3C4512816A25700768C2E /* Assets.xcassets */; };
@@ -26,7 +28,6 @@
 		EBB3C4652818491100768C2E /* SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C4642818491100768C2E /* SelectorView.swift */; };
 		EBB3C46728185D5A00768C2E /* CellStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C46628185D5A00768C2E /* CellStopView.swift */; };
 		EBD14206284E1C1500402170 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD14205284E1C1500402170 /* LocationViewModel.swift */; };
-		EBEA4683284E6D4E0047059F /* LocationSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EBEA4682284E6D4E0047059F /* LocationSettings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		EB3B17BB284FAEF700F53770 /* MapCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCellView.swift; sourceTree = "<group>"; };
 		EB3D7F55282E73FC00FBD3FA /* StopValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopValues.swift; sourceTree = "<group>"; };
 		EB3DCCE1284FF4210083E1C6 /* LocationValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationValues.swift; sourceTree = "<group>"; };
+		EB3DCCE72850C33B0083E1C6 /* WrapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapView.swift; sourceTree = "<group>"; };
+		EB3DCCE928515D020083E1C6 /* Location.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Location.bundle; sourceTree = "<group>"; };
 		EBB3C44A2816A25500768C2E /* HorariosBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorariosBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorariosBusApp.swift; sourceTree = "<group>"; };
 		EBB3C44F2816A25500768C2E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,7 +53,6 @@
 		EBB3C46628185D5A00768C2E /* CellStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellStopView.swift; sourceTree = "<group>"; };
 		EBD14205284E1C1500402170 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		EBD14207284E372300402170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		EBEA4682284E6D4E0047059F /* LocationSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LocationSettings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				EBB3C46628185D5A00768C2E /* CellStopView.swift */,
 				EBB3C4642818491100768C2E /* SelectorView.swift */,
 				EB3B17BB284FAEF700F53770 /* MapCellView.swift */,
+				EB3DCCE72850C33B0083E1C6 /* WrapView.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -130,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				EBD14207284E372300402170 /* Info.plist */,
+				EB3DCCE928515D020083E1C6 /* Location.bundle */,
 				EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */,
 				EBB3C4602817153D00768C2E /* View */,
 				EB2AABC828491D3500A564A9 /* ViewModels */,
@@ -158,7 +162,6 @@
 				EB2AABC42848D2C800A564A9 /* DetailStopView.swift */,
 				EB22D66D284BB7AC00C10344 /* MapView.swift */,
 				EB560364284E771C0005D897 /* ViewModels */,
-				EBEA4682284E6D4E0047059F /* LocationSettings.bundle */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,8 +239,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB3DCCEA28515D020083E1C6 /* Location.bundle in Resources */,
 				EBB3C4552816A25700768C2E /* Preview Assets.xcassets in Resources */,
-				EBEA4683284E6D4E0047059F /* LocationSettings.bundle in Resources */,
 				EBB3C4522816A25700768C2E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +267,7 @@
 				EBD14206284E1C1500402170 /* LocationViewModel.swift in Sources */,
 				EB2AABC02840A9A500A564A9 /* NetworkingProvider.swift in Sources */,
 				EBB3C4652818491100768C2E /* SelectorView.swift in Sources */,
+				EB3DCCE82850C33B0083E1C6 /* WrapView.swift in Sources */,
 				EB3B17BC284FAEF700F53770 /* MapCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

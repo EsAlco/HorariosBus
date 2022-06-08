@@ -43,4 +43,6 @@ final class NetworkingProvider {
         }
         
     }
+    
+//    func getAllStop
 }

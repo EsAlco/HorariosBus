@@ -18,37 +18,31 @@ struct MapCellView: View {
     
     var body: some View {
         VStack{
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: 300, height: 65)
-                .foregroundColor(isHiddenStop ? .gray : .clear)
-                .overlay(
-                    HStack{
-                        Image(systemName: "bus.fill")
-                            .padding(9)
-                            .background(.green)
-                            .cornerRadius(9)
-                            .font(.title3)
-                            .padding()
-                        VStack(alignment: .leading){
-                            Text(nameStop)
-                                .font(.system(size: 13, weight: .regular, design: .rounded))
-                                .multilineTextAlignment(.leading)
-                            Text(numberStop)
-                                .font(.system(size: 10, weight: .regular, design: .rounded))
-                                .foregroundColor(.green)
-                            Text(linesStop)
-                                .font(.system(size: 10, weight: .regular, design: .rounded))
-                                .padding(5)
-                                .background(.green)
-                                .cornerRadius(5)
-                        }
-                        Spacer()
-                    }
-                    .padding(4)
-                    .opacity(isHiddenStop ? 1 : 0)
-                ).onTapGesture {
-                    self.showNavigationDetailStop.toggle()
+            HStack{
+                Image(systemName: "bus.fill")
+                    .padding(9)
+                    .background(.green)
+                    .cornerRadius(9)
+                    .font(.title)
+                    .padding()
+                VStack(alignment: .leading, spacing: 5){
+                    Text(nameStop)
+                        .font(.system(size: 13, weight: .regular, design: .rounded))
+                        .multilineTextAlignment(.leading)
+                    Text(numberStop)
+                        .font(.system(size: 10, weight: .regular, design: .rounded))
+                        .foregroundColor(.green)
+                    WrapView(items: linesStop.replacingOccurrences(of: ",", with: "").components(separatedBy: " "))
                 }
+                Spacer()
+            }
+            .padding(8)
+            .background(.gray)
+            .cornerRadius(10)
+            .opacity(isHiddenStop ? 1 : 0)
+            .onTapGesture {
+                self.showNavigationDetailStop.toggle()
+            }.frame(width: 350)
 
             Image(systemName: "bus.fill")
             .padding(3)
@@ -63,6 +57,6 @@ struct MapCellView: View {
 
 struct MapCellView_Previews: PreviewProvider {
     static var previews: some View {
-        MapCellView(nameStop: "Satolina", numberStop: "11282", linesStop: "628", isHiddenStop: true, showNavigationDetailStop: .constant(false))
+        MapCellView(nameStop: "Satolina", numberStop: "11282", linesStop: "628, 625, 621, 624, 623, 627, 620, 626", isHiddenStop: true, showNavigationDetailStop: .constant(false))
     }
 }
