@@ -30,7 +30,7 @@ struct MapView: View {
             NavigationView{
                 VStack{
                     ZStack{
-                        Map(coordinateRegion: $locationViewModel.userLocation, interactionModes: .all, showsUserLocation: true, userTrackingMode: .constant(tracking), annotationItems: locations) { location in
+                        Map(coordinateRegion: $locationViewModel.userLocation, showsUserLocation: true, annotationItems: locations) { location in
                             MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: location.yGeometryStop, longitude: location.xGeometryStop)) {
                                 VStack{
                                     MapCellView(nameStop: location.nameStop, numberStop: location.numberStop, linesStop: location.linesStop, isHiddenStop: isHiddenStop, showNavigationDetailStop: $showNavigationDetailStop)

@@ -22,7 +22,7 @@ struct DetailStopView: View {
     @State var featureStop: Bool
     
     @State private var showDeleteFeature = false
-    @State private var showingAlert = false
+    @State private var showingAlertError = false
     @State private var isCharged = false
     
     var stopId: NSManagedObjectID?
@@ -72,7 +72,7 @@ struct DetailStopView: View {
                             }
                                         
                         } failure: { error in
-                            self.showingAlert.toggle()
+                            self.showingAlertError.toggle()
                         }
                     }
                 }
@@ -82,7 +82,7 @@ struct DetailStopView: View {
                         .progressViewStyle(CircularProgressViewStyle(tint: .green))
                 }
             }
-            .alert("Error al cargar la parada", isPresented: $showingAlert) {
+            .alert("Error al cargar la parada", isPresented: $showingAlertError) {
                 Button("OK", role: .cancel){}
             }
             .alert("Eliminar como favorita", isPresented: $showDeleteFeature, actions: {
@@ -114,7 +114,7 @@ struct DetailStopView: View {
                                         
                         } failure: { error in
                             self.isCharged.toggle()
-                            self.showingAlert.toggle()
+                            self.showingAlertError.toggle()
                         }                    }label: {
                         Image(systemName: "arrow.clockwise")
                     }
@@ -153,7 +153,7 @@ struct DetailStopView: View {
                             
             } failure: { error in
                 self.isCharged.toggle()
-                self.showingAlert.toggle()
+                self.showingAlertError.toggle()
             }
         }
     }

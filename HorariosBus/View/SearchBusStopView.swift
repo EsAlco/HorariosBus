@@ -16,9 +16,13 @@ struct SearchBusStopView: View {
     @FetchRequest(entity: Stop.entity(), sortDescriptors: []) var busStops: FetchedResults<Stop>
     
     @State var searchTextNumberStop: String
-    @State var showingAlertEmpty = false
+    
     @State var isNavigation = false
+    
+    @State var showingAlertEmpty = false
     @State var showingMap = false
+    @State var showingSearchLine = false
+    @State var showingSearchAdress = false
     
     var body: some View {
         NavigationView{
@@ -28,29 +32,29 @@ struct SearchBusStopView: View {
                         
                         HStack{
                             Spacer()
-                            Button{
-                                //TODO: Busqueda por dirección
-                            }label: {
-                                Image(systemName: "paperplane.circle.fill")
-                                    .foregroundColor(.green)
-                                    . font(.system(size: 50))
-                            }
+                            //TODO: Busqueda por dirección
+                            Image(systemName: "paperplane.circle.fill")
+                                .foregroundColor(.green)
+                                . font(.system(size: 50))
+                                .onTapGesture {
+                                    self.showingSearchAdress.toggle()
+                                }
                             Spacer()
-                            Button{
-                                self.showingMap.toggle()
-                            }label: {
-                                Image(systemName: "map.circle.fill")
-                                    .foregroundColor(.green)
-                                    . font(.system(size: 50))
-                            }
+                            
+                            Image(systemName: "map.circle.fill")
+                                .foregroundColor(.green)
+                                . font(.system(size: 50))
+                                .onTapGesture {
+                                    self.showingMap.toggle()
+                                }
                             Spacer()
-                            Button{
-                                //TODO: Busqueda por número de parada
-                            }label: {
-                                Image(systemName: "mappin.circle.fill")
-                                    .foregroundColor(.green)
-                                    . font(.system(size: 50))
-                            }
+                            
+                            Image(systemName: "mappin.circle.fill")
+                                .foregroundColor(.green)
+                                . font(.system(size: 50))
+                                .onTapGesture {
+                                    self.showingSearchLine.toggle()
+                                }
                             Spacer()
                         }
                     }
@@ -107,7 +111,9 @@ struct SearchBusStopView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Atrás"){
+                    Label("Atrás", systemImage: "chevron.backward")
+                        .font(.subheadline)
+                        .onTapGesture {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }
@@ -117,6 +123,9 @@ struct SearchBusStopView: View {
             }
             .sheet(isPresented: $showingMap) {
                 MapView(locations: [Location(nameStop: "", numberStop: "", tariffZoneStop: "", linesStop: "", xGeometryStop: 0.0, yGeometryStop: 0.0)])
+            }
+            .sheet(isPresented: $showingSearchLine) {
+                LinesView(searchLine: "", direction: "")
             }
         }
         .navigationBarHidden(true)
