@@ -22,7 +22,7 @@ struct SearchBusStopView: View {
     @State var showingAlertEmpty = false
     @State var showingMap = false
     @State var showingSearchLine = false
-    @State var showingSearchAdress = false
+    @State var showingSearchLocation = false
     
     var body: some View {
         NavigationView{
@@ -37,7 +37,7 @@ struct SearchBusStopView: View {
                                 .foregroundColor(.green)
                                 . font(.system(size: 50))
                                 .onTapGesture {
-                                    self.showingSearchAdress.toggle()
+                                    self.showingSearchLocation.toggle()
                                 }
                             Spacer()
                             
@@ -126,6 +126,9 @@ struct SearchBusStopView: View {
             }
             .sheet(isPresented: $showingSearchLine) {
                 LinesView(searchLine: "", direction: "")
+            }
+            .sheet(isPresented: $showingSearchLocation) {
+                NameLocationView(nameLocation: "")
             }
         }
         .navigationBarHidden(true)

@@ -63,17 +63,8 @@ struct DetailStopView: View {
                             Text(line)
                         }
                     }.refreshable {
-                        NetworkingProvider.shared.getStop(numberStop: numberStop) { stopResponse in
-                            for attributes in stopResponse.features{
-                                nameStop = attributes.nameStop
-                                numberStop = attributes.numberStop
-                                tariffZoneStop = attributes.tariffZoneStop
-                                linesStop = attributes.linesStop
-                            }
-                                        
-                        } failure: { error in
-                            self.showingAlertError.toggle()
-                        }
+                        isCharged.toggle()
+                        chargedNetworking()
                     }
                 }
                 if isCharged {
@@ -103,19 +94,9 @@ struct DetailStopView: View {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button{
                         self.isCharged.toggle()
-                        NetworkingProvider.shared.getStop(numberStop: numberStop) { stopResponse in
-                            self.isCharged.toggle()
-                            for attributes in stopResponse.features{
-                                nameStop = attributes.nameStop
-                                numberStop = attributes.numberStop
-                                tariffZoneStop = attributes.tariffZoneStop
-                                linesStop = attributes.linesStop
-                            }
-                                        
-                        } failure: { error in
-                            self.isCharged.toggle()
-                            self.showingAlertError.toggle()
-                        }                    }label: {
+                        chargedNetworking()
+                        
+                    }label: {
                         Image(systemName: "arrow.clockwise")
                     }
                     Button{
@@ -142,19 +123,22 @@ struct DetailStopView: View {
         
         .onAppear{
             self.isCharged.toggle()
-            NetworkingProvider.shared.getStop(numberStop: numberStop) { stopResponse in
-                self.isCharged.toggle()
-                for attributes in stopResponse.features{
-                    nameStop = attributes.nameStop
-                    numberStop = attributes.numberStop
-                    tariffZoneStop = attributes.tariffZoneStop
-                    linesStop = attributes.linesStop
-                }
-                            
-            } failure: { error in
-                self.isCharged.toggle()
-                self.showingAlertError.toggle()
+            chargedNetworking()
+        }
+    }
+    func chargedNetworking() {
+        NetworkingProvider.shared.getStop(numberStop: numberStop) { stopResponse in
+            self.isCharged.toggle()
+            for attributes in stopResponse.features{
+                nameStop = attributes.nameStop
+                numberStop = attributes.numberStop
+                tariffZoneStop = attributes.tariffZoneStop
+                linesStop = attributes.linesStop
             }
+                        
+        } failure: { error in
+            self.isCharged.toggle()
+            self.showingAlertError.toggle()
         }
     }
     
@@ -183,7 +167,6 @@ struct DetailStopView_Previews: PreviewProvider {
 
 
 extension View{
-    
     
     // MARK: Alert's TextField
     func alertTextField(title: String, message: String, hintText: String, primaryTitle: String, secondaryTitle: String, primaryAction: @escaping (String)->(), secondaryAction: @escaping ()->()){

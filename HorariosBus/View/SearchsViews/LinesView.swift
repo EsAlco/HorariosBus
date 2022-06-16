@@ -17,9 +17,9 @@ struct LinesView: View {
     @State var stopsByLines = [String:[String:String]] ()
     @State var listStops = [StopsByLineSimplyValues]()
     @State var direction: String
-    @State var lineNm: String = ""
-    @State var nameSt1: String = ""
-    @State var nameSt2: String = ""
+    @State var lineNumber: String = ""
+    @State var nameStop1: String = ""
+    @State var nameStop2: String = ""
     
     @State var showingAlertError = false
     @State var showingSelectedDirection = false
@@ -62,9 +62,9 @@ struct LinesView: View {
                                 }
                                 .onTapGesture {
                                     self.showingSelectedDirection.toggle()
-                                    lineNm = line.numberLine
-                                    nameSt1 = line.nameStop1
-                                    nameSt2 = line.nameStop2
+                                    lineNumber = line.numberLine
+                                    nameStop1 = line.nameStop1
+                                    nameStop2 = line.nameStop2
                                 }
                             }
                         }
@@ -80,7 +80,7 @@ struct LinesView: View {
                         .progressViewStyle(CircularProgressViewStyle(tint: .green))
                 }
                 
-                NavigationLink("", destination: DetailLineStopsView(directionLine: direction, numberLine: lineNm), isActive: $showDetailLineStops)
+                NavigationLink("", destination: DetailLineStopsView(directionLine: direction, numberLine: lineNumber, numberStop: ""), isActive: $showDetailLineStops)
                     .hidden()
             }
             .toolbar {
@@ -103,16 +103,16 @@ struct LinesView: View {
                     direction = "1"
                     self.showDetailLineStops.toggle()
                 } label: {
-                    Text(nameSt1)
+                    Text(nameStop1)
                 }
                 Button {
                     direction = "2"
                     self.showDetailLineStops.toggle()
                 } label: {
-                    Text(nameSt2)
+                    Text(nameStop2)
                 }
             } message: {
-                Text(lineNm)
+                Text(lineNumber)
             }
         }
         .onAppear{

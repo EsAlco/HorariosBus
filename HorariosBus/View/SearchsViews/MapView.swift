@@ -44,10 +44,6 @@ struct MapView: View {
                             locationViewModel.checkUserAuthorization()
                         }
                         
-//                        RoundedRectangle(cornerRadius: 10)
-//                            .frame(width: 100, height: 5)
-//                            .offset(y: geometry.size.height * -0.56)
-                        
                         if isCharged {
                             ProgressView()
                                 .scaleEffect(2)
@@ -75,18 +71,21 @@ struct MapView: View {
 
             .onAppear{
                 self.isCharged.toggle()
-                NetworkingProvider.shared.getAllStops { allStopsResponse in
-                    self.isCharged.toggle()
-                    for attributes in allStopsResponse.features{
-                        locations.append(contentsOf: [Location(nameStop: attributes.nameStop, numberStop: attributes.numberStop, tariffZoneStop: attributes.tariffZoneStop, linesStop: attributes.linesStop, xGeometryStop: attributes.xGeometryStop, yGeometryStop: attributes.yGeometryStop)])
-                    }
-                } failure: { error in
-                    self.isCharged.toggle()
-                    self.showingAlert.toggle()
-                }
+                chargedNetworking()
             }
         }
-
+    }
+    
+    func chargedNetworking() {
+        NetworkingProvider.shared.getAllStops { allStopsResponse in
+            self.isCharged.toggle()
+            for attributes in allStopsResponse.features{
+                locations.append(contentsOf: [Location(nameStop: attributes.nameStop, numberStop: attributes.numberStop, tariffZoneStop: attributes.tariffZoneStop, linesStop: attributes.linesStop, xGeometryStop: attributes.xGeometryStop, yGeometryStop: attributes.yGeometryStop)])
+            }
+        } failure: { error in
+            self.isCharged.toggle()
+            self.showingAlert.toggle()
+        }
     }
 }
 

@@ -15,9 +15,11 @@ struct DetailLineStopsView: View {
     @State var stopsByLine: [StopByLineValues] = []
     @State var directionLine: String
     @State var numberLine: String
+    @State var numberStop: String
     
     @State var isCharged = false
     @State var showingAlertError = false
+    @State var showDetailStop = false
     
     var body: some View {
         NavigationView{
@@ -41,6 +43,10 @@ struct DetailLineStopsView: View {
                                     .cornerRadius(8)
                                 Text(stop.nameStop)
                             }
+                            .onTapGesture {
+                                self.showDetailStop.toggle()
+                                numberStop = stop.numberStop
+                            }
                         }
                     }
                 }
@@ -62,29 +68,34 @@ struct DetailLineStopsView: View {
                         .scaleEffect(2)
                         .progressViewStyle(CircularProgressViewStyle(tint: .green))
                 }
+                NavigationLink("", destination: DetailStopView(nameStop: "", numberStop: numberStop, tariffZoneStop: "", linesStop: "", aliasStop: "", featureStop: false), isActive: $showDetailStop)
+                    .hidden()
             }
         }
         .navigationBarHidden(true)
         .onAppear{
             self.isCharged.toggle()
-            
-            NetworkingProvider.shared.getStopByLine(numberLine: numberLine) { stopsByLineResponse in
-                self.isCharged.toggle()
-                for attributes in stopsByLineResponse.features{
-                    if attributes.directionLine == directionLine && stopsByLine.contains(StopByLineValues(numberLine: attributes.numberLine, directionLine: attributes.directionLine, positionStopLine: attributes.positionStopLine, nameStop: attributes.nameStop, adressStop: attributes.adressStop, tariffZoneStop: attributes.tariffZoneStop ?? "", numberStop: attributes.numberStop)) == false {
-                        stopsByLine.append(StopByLineValues(numberLine: attributes.numberLine, directionLine: attributes.directionLine, positionStopLine: attributes.positionStopLine, nameStop: attributes.nameStop, adressStop: attributes.adressStop, tariffZoneStop: attributes.tariffZoneStop ?? "", numberStop: attributes.numberStop))
-                    }
+            chargedNetworking()
+        }
+    }
+    
+    func chargedNetworking() {
+        NetworkingProvider.shared.getStopByLine(numberLine: numberLine) { stopsByLineResponse in
+            self.isCharged.toggle()
+            for attributes in stopsByLineResponse.features{
+                if attributes.directionLine == directionLine && stopsByLine.contains(StopByLineValues(numberLine: attributes.numberLine, directionLine: attributes.directionLine, positionStopLine: attributes.positionStopLine, nameStop: attributes.nameStop, adressStop: attributes.adressStop, tariffZoneStop: attributes.tariffZoneStop ?? "", numberStop: attributes.numberStop, locationStop: attributes.locationStop ?? "")) == false {
+                    stopsByLine.append(StopByLineValues(numberLine: attributes.numberLine, directionLine: attributes.directionLine, positionStopLine: attributes.positionStopLine, nameStop: attributes.nameStop, adressStop: attributes.adressStop, tariffZoneStop: attributes.tariffZoneStop ?? "", numberStop: attributes.numberStop, locationStop: attributes.locationStop ?? ""))
                 }
-            } failure: { error in
-                self.isCharged.toggle()
-                self.showingAlertError.toggle()
             }
+        } failure: { error in
+            self.isCharged.toggle()
+            self.showingAlertError.toggle()
         }
     }
 }
 
 struct DetailLineStopsView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailLineStopsView(directionLine: "2", numberLine: "628")
+        DetailLineStopsView(directionLine: "2", numberLine: "628", numberStop: "11828")
     }
 }

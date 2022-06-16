@@ -63,13 +63,29 @@ final class NetworkingProvider {
         }
     }
     
-    // All stops  by lines
+    // All stops by lines
     func getAllStopsByLine(success: @escaping (_ allStopsByLineResponse: StopsLinesResponse) -> (), failure: @escaping (_ error: Error?) -> ()) {
         let url = "\(kBaseUrl)3/query?where=1%3D1&outFields=NUMEROLINEAUSUARIO,SENTIDO,NUMEROORDEN,DENOMINACION,DIRECCION,CORONATARIFARIA,CODIGOESTACION&outSR=4326&f=json"
         
         AF.request(url, method: .get).validate(statusCode: kStatusOk).responseDecodable (of: StopsLinesResponse.self) { response in
             if let allStopsLinesResponse = response.value {
                 success(allStopsLinesResponse)
+            } else {
+                failure(response.error)
+                print(response.error!)
+            }
+        }
+    }
+    
+    // Stop by location
+    func getStopByLocation(nameLocation: String, success: @escaping (_ stopsByLocationResponse: StopsLinesResponse) -> (), failure: @escaping (_ error: Error?) -> ()) {
+   
+        let url = "\(kBaseUrl)3/query?where=MUNICIPIO='\(nameLocation)'&outFields=NUMEROLINEAUSUARIO,SENTIDO,NUMEROORDEN,DENOMINACION,DIRECCION,CORONATARIFARIA,CODIGOESTACION,MUNICIPIO&outSR=4326&f=json"
+        
+        AF.request(url, method: .get).validate(statusCode: kStatusOk).responseDecodable (of: StopsLinesResponse.self) {
+            response in
+            if let stopsByLocationResponse = response.value{
+                success(stopsByLocationResponse)
             } else {
                 failure(response.error)
                 print(response.error!)

@@ -42,6 +42,7 @@ struct StopsLinesResponse: Decodable {
         var adressStop: String
         var tariffZoneStop: String?
         var numberStop: String
+        var locationStop: String?
 
         enum FeaturesKeys: String, CodingKey {
             case attributes
@@ -54,6 +55,7 @@ struct StopsLinesResponse: Decodable {
             case adressStop = "DIRECCION"
             case tariffZoneStop = "CORONATARIFARIA"
             case numberStop = "CODIGOESTACION"
+            case locationStop = "MUNICIPIO"
             
         }
         
@@ -72,6 +74,12 @@ struct StopsLinesResponse: Decodable {
                 self.tariffZoneStop = tariffZoneStop
             } else {
                 self.tariffZoneStop = ""
+            }
+            
+            if let locationStop = try attributesContainer.decodeIfPresent(String.self, forKey: .locationStop) {
+                self.locationStop = locationStop
+            } else {
+                self.locationStop = ""
             }
         }
     }

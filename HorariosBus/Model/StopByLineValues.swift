@@ -14,4 +14,5 @@ struct StopByLineValues: Hashable {
     var adressStop: String
     var tariffZoneStop: String
     var numberStop: String
+    var locationStop: String
 }

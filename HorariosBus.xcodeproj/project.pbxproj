@@ -22,6 +22,9 @@
 		EB3DCCEE2851F8390083E1C6 /* LinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3DCCED2851F8390083E1C6 /* LinesView.swift */; };
 		EB3E212A28589A6D00CF9F3F /* StopByLineValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E212928589A6D00CF9F3F /* StopByLineValues.swift */; };
 		EB3E212C28589C6100CF9F3F /* StopByLineSimplyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E212B28589C6100CF9F3F /* StopByLineSimplyValues.swift */; };
+		EB3E212E2858FA1100CF9F3F /* NameLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E212D2858FA1100CF9F3F /* NameLocationView.swift */; };
+		EB3E2131285A31D100CF9F3F /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E2130285A31D100CF9F3F /* Locations.swift */; };
+		EB3E2133285A593E00CF9F3F /* DetailLocationStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E2132285A593E00CF9F3F /* DetailLocationStopView.swift */; };
 		EB41208328522D2B00CF46E0 /* CellLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB41208228522D2B00CF46E0 /* CellLineView.swift */; };
 		EB41208628524A9400CF46E0 /* DetailLineStopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB41208528524A9400CF46E0 /* DetailLineStopsView.swift */; };
 		EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */; };
@@ -51,6 +54,9 @@
 		EB3DCCED2851F8390083E1C6 /* LinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesView.swift; sourceTree = "<group>"; };
 		EB3E212928589A6D00CF9F3F /* StopByLineValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopByLineValues.swift; sourceTree = "<group>"; };
 		EB3E212B28589C6100CF9F3F /* StopByLineSimplyValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopByLineSimplyValues.swift; sourceTree = "<group>"; };
+		EB3E212D2858FA1100CF9F3F /* NameLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameLocationView.swift; sourceTree = "<group>"; };
+		EB3E2130285A31D100CF9F3F /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		EB3E2132285A593E00CF9F3F /* DetailLocationStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLocationStopView.swift; sourceTree = "<group>"; };
 		EB41208228522D2B00CF46E0 /* CellLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellLineView.swift; sourceTree = "<group>"; };
 		EB41208528524A9400CF46E0 /* DetailLineStopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLineStopsView.swift; sourceTree = "<group>"; };
 		EBB3C44A2816A25500768C2E /* HorariosBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorariosBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +115,7 @@
 		EB3D7F54282E73E200FBD3FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EB3E212F285A31B700CF9F3F /* Data */,
 				EB3D7F55282E73FC00FBD3FA /* StopValues.swift */,
 				EB3DCCE1284FF4210083E1C6 /* LocationValues.swift */,
 				EB3E212928589A6D00CF9F3F /* StopByLineValues.swift */,
@@ -122,8 +129,17 @@
 			children = (
 				EB3DCCED2851F8390083E1C6 /* LinesView.swift */,
 				EB22D66D284BB7AC00C10344 /* MapView.swift */,
+				EB3E212D2858FA1100CF9F3F /* NameLocationView.swift */,
 			);
 			path = SearchsViews;
+			sourceTree = "<group>";
+		};
+		EB3E212F285A31B700CF9F3F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EB3E2130285A31D100CF9F3F /* Locations.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		EB41208428524A6F00CF46E0 /* DetailsView */ = {
@@ -131,6 +147,7 @@
 			children = (
 				EB2AABC42848D2C800A564A9 /* DetailStopView.swift */,
 				EB41208528524A9400CF46E0 /* DetailLineStopsView.swift */,
+				EB3E2132285A593E00CF9F3F /* DetailLocationStopView.swift */,
 			);
 			path = DetailsView;
 			sourceTree = "<group>";
@@ -289,6 +306,8 @@
 				EB3D7F56282E73FC00FBD3FA /* StopValues.swift in Sources */,
 				EB41208328522D2B00CF46E0 /* CellLineView.swift in Sources */,
 				EB2AABCA28491D9C00A564A9 /* AddStopViewModel.swift in Sources */,
+				EB3E212E2858FA1100CF9F3F /* NameLocationView.swift in Sources */,
+				EB3E2133285A593E00CF9F3F /* DetailLocationStopView.swift in Sources */,
 				EB3E212C28589C6100CF9F3F /* StopByLineSimplyValues.swift in Sources */,
 				EB2AABC52848D2C800A564A9 /* DetailStopView.swift in Sources */,
 				EB2AABBB2840986200A564A9 /* StopsResponse.swift in Sources */,
@@ -308,6 +327,7 @@
 				EBB3C4652818491100768C2E /* SelectorView.swift in Sources */,
 				EB3DCCE82850C33B0083E1C6 /* WrapView.swift in Sources */,
 				EB3B17BC284FAEF700F53770 /* MapCellView.swift in Sources */,
+				EB3E2131285A31D100CF9F3F /* Locations.swift in Sources */,
 				EB41208628524A9400CF46E0 /* DetailLineStopsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
