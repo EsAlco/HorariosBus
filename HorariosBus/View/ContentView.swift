@@ -61,6 +61,8 @@ struct ContentView: View {
                             }
                         }.onDelete(perform: removeBusStops)
                     }
+                } header: {
+                    Text("Paradas favoritas")
                 }
             }
             .navigationTitle("Autobuses")

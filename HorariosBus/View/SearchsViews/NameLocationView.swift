@@ -9,11 +9,12 @@ import SwiftUI
 
 struct NameLocationView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var searchNameLocation: String = ""
     @State var nameLocation: String
+    @State var nameLocationReal: String
     @StateObject var locations = LocationsList()
-    
-    @State var isCharged = false
     
     @State var showDetailLineStops = false
     @State var showingAlert = false
@@ -23,7 +24,7 @@ struct NameLocationView: View {
             ZStack{
                 Form{
                     Section{
-                        TextField("Burcar por numero de línea", text: $searchNameLocation)
+                        TextField("Burcar por municipio", text: $searchNameLocation)
                             .font(.system(size: 20, weight: .light, design: .rounded))
                             .minimumScaleFactor(0.5)
                             .padding()
@@ -31,6 +32,7 @@ struct NameLocationView: View {
                                 RoundedRectangle(cornerRadius: 5, style: .continuous)
                                     .stroke(.green, lineWidth: 2)
                                 )
+                            .padding(.top)
                         HStack{
                             Spacer()
                             Text("Buscar")
@@ -43,13 +45,12 @@ struct NameLocationView: View {
                                 }
                             Spacer()
                         }
+                        .padding(.bottom)
                     } header: {
                         Text("Introduzca el nombre del municipio")
                             .frame(alignment: .leading)
                     }
-                    .padding()
                     .listRowSeparator(.hidden)
-                    .multilineTextAlignment(.center)
                     
                     Section{
                         Picker("", selection: $nameLocation) {
@@ -59,6 +60,7 @@ struct NameLocationView: View {
                                 Text(key)
                                     .onTapGesture {
                                         nameLocation = value
+                                        nameLocationReal = key
                                         self.showDetailLineStops.toggle()
                                     }
                             }
@@ -70,8 +72,26 @@ struct NameLocationView: View {
                     }
                 }
                 
-                NavigationLink("", destination: DetailLineStopsView(directionLine: "", numberLine: "", numberStop: ""), isActive: $showDetailLineStops)
+                NavigationLink("", destination: DetailLocationStopView(nameLocation: nameLocation, nameLocationReal: nameLocationReal), isActive: $showDetailLineStops)
                     .hidden()
+                
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Label("Atrás", systemImage: "chevron.backward")
+                        .font(.subheadline)
+                        .foregroundColor(.green)
+                        .padding(2)
+                        .onTapGesture {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("Buscar por municipio")
+                        .padding(2)
+                        .font(.system(.title2, design: .rounded))
+                        .foregroundColor(.green)
+                }
             }
         }
         .navigationBarHidden(true)
@@ -80,6 +100,6 @@ struct NameLocationView: View {
 
 struct NameLocationView_Previews: PreviewProvider {
     static var previews: some View {
-        NameLocationView(nameLocation: "ROZAS+DE+MADRID,+LAS")
+        NameLocationView(nameLocation: "ROZAS+DE+MADRID,+LAS", nameLocationReal: "Las Rozas de Madrid")
     }
 }

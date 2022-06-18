@@ -68,6 +68,10 @@ struct LinesView: View {
                                 }
                             }
                         }
+                        .refreshable {
+                            isCharged.toggle()
+                            chargedNetworking()
+                        }
                     }
                 }
                 .alert("Error al cargar la parada", isPresented: $showingAlertError) {
@@ -87,6 +91,7 @@ struct LinesView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Label("Atrás", systemImage: "chevron.backward")
                         .font(.subheadline)
+                        .foregroundColor(.green)
                         .padding(2)
                         .onTapGesture {
                             self.presentationMode.wrappedValue.dismiss()
@@ -96,6 +101,16 @@ struct LinesView: View {
                     Text("Buscar por línea")
                         .padding(2)
                         .font(.system(.title2, design: .rounded))
+                        .foregroundColor(.green)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button{
+                        self.isCharged.toggle()
+                        chargedNetworking()
+                        
+                    }label: {
+                        Image(systemName: "arrow.clockwise")
+                    }
                 }
             }
             .confirmationDialog("Dirección", isPresented: $showingSelectedDirection) {

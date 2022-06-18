@@ -65,7 +65,8 @@ struct MapView: View {
                             .padding(32)
                     }
                 }
-            }.alert("Error al cargar las paradas", isPresented: $showingAlert) {
+            }
+            .alert("Error al cargar las paradas", isPresented: $showingAlert) {
                 Button("OK", role: .cancel){}
             }
 

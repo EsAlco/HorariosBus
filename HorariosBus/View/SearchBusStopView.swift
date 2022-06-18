@@ -128,7 +128,7 @@ struct SearchBusStopView: View {
                 LinesView(searchLine: "", direction: "")
             }
             .sheet(isPresented: $showingSearchLocation) {
-                NameLocationView(nameLocation: "")
+                NameLocationView(nameLocation: "", nameLocationReal: "")
             }
         }
         .navigationBarHidden(true)
