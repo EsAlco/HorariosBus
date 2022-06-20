@@ -62,12 +62,23 @@ struct DetailLocationStopView: View {
                                     return lineA.positionStopLine > lineB.positionStopLine
                                 }), id: \.self) { stop in
                                     HStack{
-                                        VStack {
+                                        VStack{
                                             Text(stop.nameStop)
-                                            Text(stop.adressStop)
+                                                .font(.system(size: 19, weight: .bold, design: .rounded))
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                            HStack{
+                                                Image(systemName: "bus.fill")
+                                                    .foregroundColor(.green)
+                                                    .offset(x: 0, y: 2)
+                                                Text(stop.adressStop)
+                                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                                    
+                                            }
                                         }
                                         Spacer()
                                         Text(stop.numberStop)
+                                            .font(.system(size: 19, weight: .bold, design: .rounded))
+                                            .foregroundColor(.green)
                                     }
                                 }
                             }
@@ -77,6 +88,9 @@ struct DetailLocationStopView: View {
                             }
                         } header: {
                             Text(line)
+                                .padding(5)
+                                .background(.green)
+                                .cornerRadius(5)
                         }
                     }
                 }
@@ -123,24 +137,25 @@ struct DetailLocationStopView: View {
         }
         .navigationBarHidden(true)
     }
-        func chargedNetworking() {
-            NetworkingProvider.shared.getStopByLocation(nameLocation: nameLocation) { allStopsResponse in
-                self.isCharged.toggle()
-                
-                for attributes in allStopsResponse.features{
-                    if stopsByNumberLine.keys.contains(attributes.numberLine) == false && attributes.directionLine == "2"{
-                        stopsByNumberLine[attributes.numberLine] = [StopByLineValues(numberLine: attributes.numberLine, directionLine: attributes.directionLine, positionStopLine: attributes.positionStopLine, nameStop: attributes.nameStop, adressStop: attributes.adressStop, tariffZoneStop: attributes.tariffZoneStop ?? "", numberStop: attributes.numberStop, locationStop: attributes.locationStop ?? "")]
-                        numbersLines.append(attributes.numberLine)
-                    }
-                    else if stopsByNumberLine.keys.contains(attributes.numberLine) == true && stopsByNumberLine[attributes.numberLine]!.contains(StopByLineValues(numberLine: attributes.numberLine, directionLine: attributes.directionLine, positionStopLine: attributes.positionStopLine, nameStop: attributes.nameStop, adressStop: attributes.adressStop, tariffZoneStop: attributes.tariffZoneStop ?? "", numberStop: attributes.numberStop, locationStop: attributes.locationStop ?? "")) == false {
-                        stopsByNumberLine[attributes.numberLine]!.append(StopByLineValues(numberLine: attributes.numberLine, directionLine: attributes.directionLine, positionStopLine: attributes.positionStopLine, nameStop: attributes.nameStop, adressStop: attributes.adressStop, tariffZoneStop: attributes.tariffZoneStop ?? "", numberStop: attributes.numberStop, locationStop: attributes.locationStop ?? ""))
-                    }
+    
+    func chargedNetworking() {
+        NetworkingProvider.shared.getStopByLocation(nameLocation: nameLocation) { allStopsResponse in
+            self.isCharged.toggle()
+            
+            for attributes in allStopsResponse.features{
+                if stopsByNumberLine.keys.contains(attributes.numberLine) == false && attributes.directionLine == "2"{
+                    stopsByNumberLine[attributes.numberLine] = [StopByLineValues(numberLine: attributes.numberLine, directionLine: attributes.directionLine, positionStopLine: attributes.positionStopLine, nameStop: attributes.nameStop, adressStop: attributes.adressStop, tariffZoneStop: attributes.tariffZoneStop ?? "", numberStop: attributes.numberStop, locationStop: attributes.locationStop ?? "")]
+                    numbersLines.append(attributes.numberLine)
                 }
-            } failure: { error in
-                self.isCharged.toggle()
-                self.showingAlert.toggle()
+                else if stopsByNumberLine.keys.contains(attributes.numberLine) == true && stopsByNumberLine[attributes.numberLine]!.contains(StopByLineValues(numberLine: attributes.numberLine, directionLine: attributes.directionLine, positionStopLine: attributes.positionStopLine, nameStop: attributes.nameStop, adressStop: attributes.adressStop, tariffZoneStop: attributes.tariffZoneStop ?? "", numberStop: attributes.numberStop, locationStop: attributes.locationStop ?? "")) == false {
+                    stopsByNumberLine[attributes.numberLine]!.append(StopByLineValues(numberLine: attributes.numberLine, directionLine: attributes.directionLine, positionStopLine: attributes.positionStopLine, nameStop: attributes.nameStop, adressStop: attributes.adressStop, tariffZoneStop: attributes.tariffZoneStop ?? "", numberStop: attributes.numberStop, locationStop: attributes.locationStop ?? ""))
+                }
             }
+        } failure: { error in
+            self.isCharged.toggle()
+            self.showingAlert.toggle()
         }
+    }
 }
 
 struct DetailLocationStopView_Previews: PreviewProvider {

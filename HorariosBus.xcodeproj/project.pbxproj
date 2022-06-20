@@ -186,7 +186,8 @@
 				EBD14207284E372300402170 /* Info.plist */,
 				EB3DCCE928515D020083E1C6 /* Location.bundle */,
 				EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */,
-				EBB3C4602817153D00768C2E /* View */,
+				EBB3C44F2816A25500768C2E /* ContentView.swift */,
+				EBB3C4602817153D00768C2E /* InterurbanBusViews */,
 				EB2AABC828491D3500A564A9 /* ViewModels */,
 				EB3D7F54282E73E200FBD3FA /* Model */,
 				EBB3C4612817155100768C2E /* CoreData */,
@@ -205,16 +206,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		EBB3C4602817153D00768C2E /* View */ = {
+		EBB3C4602817153D00768C2E /* InterurbanBusViews */ = {
 			isa = PBXGroup;
 			children = (
-				EBB3C44F2816A25500768C2E /* ContentView.swift */,
 				EBB3C4622817159400768C2E /* SearchBusStopView.swift */,
 				EB41208428524A6F00CF46E0 /* DetailsView */,
 				EB3DCCEF2851F8410083E1C6 /* SearchsViews */,
 				EB560364284E771C0005D897 /* ViewModels */,
 			);
-			path = View;
+			path = InterurbanBusViews;
 			sourceTree = "<group>";
 		};
 		EBB3C4612817155100768C2E /* CoreData */ = {

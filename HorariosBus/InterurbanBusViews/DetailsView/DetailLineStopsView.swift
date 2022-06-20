@@ -16,6 +16,7 @@ struct DetailLineStopsView: View {
     @State var directionLine: String
     @State var numberLine: String
     @State var numberStop: String
+    @State var nameDierection: String
     
     @State var isCharged = false
     @State var showingAlertError = false
@@ -58,9 +59,29 @@ struct DetailLineStopsView: View {
                         Label("Atrás", systemImage: "chevron.backward")
                             .font(.subheadline)
                             .padding(2)
+                            .foregroundColor(.green)
                             .onTapGesture {
                                 self.presentationMode.wrappedValue.dismiss()
                             }
+                    }
+                    ToolbarItem(placement: .principal) {
+                        VStack{
+                            Text(numberLine)
+                                .font(.system(.title2, design: .rounded))
+                                .foregroundColor(.green)
+                            Text(nameDierection)
+                                .font(.system(.body, design: .rounded))
+                                .foregroundColor(.green)
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button{
+                            self.isCharged.toggle()
+                            chargedNetworking()
+                            
+                        }label: {
+                            Image(systemName: "arrow.clockwise")
+                        }
                     }
                 }
                 if isCharged {
@@ -96,6 +117,6 @@ struct DetailLineStopsView: View {
 
 struct DetailLineStopsView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailLineStopsView(directionLine: "2", numberLine: "628", numberStop: "11828")
+        DetailLineStopsView(directionLine: "2", numberLine: "628", numberStop: "11828", nameDierection: "El Cantizal")
     }
 }

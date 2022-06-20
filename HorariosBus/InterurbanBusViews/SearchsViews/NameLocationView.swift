@@ -58,6 +58,7 @@ struct NameLocationView: View {
                                 searchNameLocation.isEmpty ? true : location.key.contains(searchNameLocation)
                             }, id:\.key) { key, value in
                                 Text(key)
+                                    .font(.system(.headline, design: .rounded))
                                     .onTapGesture {
                                         nameLocation = value
                                         nameLocationReal = key

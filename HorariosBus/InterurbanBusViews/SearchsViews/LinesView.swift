@@ -20,6 +20,7 @@ struct LinesView: View {
     @State var lineNumber: String = ""
     @State var nameStop1: String = ""
     @State var nameStop2: String = ""
+    @State var nameDirection: String = ""
     
     @State var showingAlertError = false
     @State var showingSelectedDirection = false
@@ -47,7 +48,7 @@ struct LinesView: View {
                                         .padding(9)
                                         .font(.system(.title2, design: .rounded))
                                         .frame(width: 80, height: 40)
-                                        . background(.green)
+                                        .background(.green)
                                         .cornerRadius(10)
                                     
                                     Text(line.nameStop1)
@@ -84,7 +85,7 @@ struct LinesView: View {
                         .progressViewStyle(CircularProgressViewStyle(tint: .green))
                 }
                 
-                NavigationLink("", destination: DetailLineStopsView(directionLine: direction, numberLine: lineNumber, numberStop: ""), isActive: $showDetailLineStops)
+                NavigationLink("", destination: DetailLineStopsView(directionLine: direction, numberLine: lineNumber, numberStop: "", nameDierection: nameDirection), isActive: $showDetailLineStops)
                     .hidden()
             }
             .toolbar {
@@ -116,12 +117,14 @@ struct LinesView: View {
             .confirmationDialog("Dirección", isPresented: $showingSelectedDirection) {
                 Button {
                     direction = "1"
+                    nameDirection = nameStop1
                     self.showDetailLineStops.toggle()
                 } label: {
                     Text(nameStop1)
                 }
                 Button {
                     direction = "2"
+                    nameDirection = nameStop2
                     self.showDetailLineStops.toggle()
                 } label: {
                     Text(nameStop2)
