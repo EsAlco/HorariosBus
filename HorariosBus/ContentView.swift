@@ -16,6 +16,7 @@ struct ContentView: View {
     
     @State private var searchText: String = ""
     @State var isInterBus = false
+    @State var isTrein = false
     @State private var isDetailView = false
     
     
@@ -27,16 +28,30 @@ struct ContentView: View {
             Form{
                 Section{
                     HStack{
-    
-                        Image(systemName: "bus.fill")
-                            .padding(14)
-                            .background(.green)
-                            .cornerRadius(25)
-                            .onTapGesture {
-                                self.isInterBus.toggle()
-                            }
-                        NavigationLink("", destination: SearchBusStopView(searchTextNumberStop: ""), isActive: $isInterBus)
-                            .hidden()
+                        ZStack{
+                            Image(systemName: "bus.fill")
+                                .padding(14)
+                                .frame(width: 50, height: 50)
+                                .background(Color.greenBus)
+                                .cornerRadius(25)
+                                .onTapGesture {
+                                    self.isInterBus.toggle()
+                                }
+                            NavigationLink("", destination: SearchBusStopView(searchTextNumberStop: ""), isActive: $isInterBus)
+                                .hidden()
+                        }
+                        ZStack{
+                            Image(systemName: "tram.fill")
+                                .padding(14)
+                                .frame(width: 50, height: 50)
+                                .background(Color.redTrain)
+                                .cornerRadius(25)
+                                .onTapGesture {
+                                    self.isTrein.toggle()
+                                }
+                            NavigationLink("", destination: SearchTrainStopView(), isActive: $isTrein)
+                                .hidden()
+                        }
                     }
                 }
                 Section {

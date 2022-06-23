@@ -13,6 +13,7 @@ struct Location: Identifiable {
     let numberStop: String
     let tariffZoneStop: String
     let linesStop: String
+    let typeOfTransport: String
     let xGeometryStop: Double
     let yGeometryStop: Double
 }

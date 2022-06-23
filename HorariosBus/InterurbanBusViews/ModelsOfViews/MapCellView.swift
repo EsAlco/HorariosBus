@@ -12,6 +12,7 @@ struct MapCellView: View {
     @State var nameStop: String
     @State var numberStop: String
     @State var linesStop: String
+    @State var typeOfTransport: String
     
     @State var isHiddenStop = false
     @Binding var showNavigationDetailStop: Bool
@@ -19,9 +20,10 @@ struct MapCellView: View {
     var body: some View {
         VStack{
             HStack{
-                Image(systemName: "bus.fill")
+                Image(systemName: typeOfTransport == "Interurban" ? "bus.fill" : "tram.fill")
                     .padding(9)
-                    .background(.green)
+                    .frame(width: 60, height: 60)
+                    .background(typeOfTransport == "Interurban" ? .green : .red)
                     .cornerRadius(9)
                     .font(.title)
                     .padding()
@@ -31,7 +33,7 @@ struct MapCellView: View {
                         .multilineTextAlignment(.leading)
                     Text(numberStop)
                         .font(.system(size: 10, weight: .regular, design: .rounded))
-                        .foregroundColor(.green)
+                        .foregroundColor(typeOfTransport == "Interurban" ? .green : .red)
                     WrapView(items: linesStop.replacingOccurrences(of: ",", with: "").components(separatedBy: " "))
                 }
                 Spacer()
@@ -44,9 +46,10 @@ struct MapCellView: View {
                 self.showNavigationDetailStop.toggle()
             }.frame(width: 350)
 
-            Image(systemName: "bus.fill")
+            Image(systemName: typeOfTransport == "Interurban" ? "bus.fill" : "tram.fill")
             .padding(3)
-            .background(.green)
+            .frame(width: 30, height: 30)
+            .background(typeOfTransport == "Interurban" ? .green : .red)
             .cornerRadius(5)
             .onTapGesture {
                 self.isHiddenStop.toggle()
@@ -57,6 +60,6 @@ struct MapCellView: View {
 
 struct MapCellView_Previews: PreviewProvider {
     static var previews: some View {
-        MapCellView(nameStop: "Satolina", numberStop: "11282", linesStop: "628, 625, 621, 624, 623, 627, 620, 626", isHiddenStop: true, showNavigationDetailStop: .constant(false))
+        MapCellView(nameStop: "Satolina", numberStop: "11282", linesStop: "628, 625, 621, 624, 623, 627, 620, 626", typeOfTransport: "Interurban", isHiddenStop: true, showNavigationDetailStop: .constant(false))
     }
 }

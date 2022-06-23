@@ -1,12 +1,11 @@
 //
-//  StopsResponse.swift
+//  StopsTrainResponse.swift
 //  HorariosBus
 //
-//  Created by Esther Alcoceba Gutiérrez de León on 27/5/22.
+//  Created by Esther Alcoceba Gutiérrez de León on 20/6/22.
 //
 
 import Foundation
-
 
 //{
 //   "objectIdFieldName":"OBJECTID",
@@ -26,13 +25,13 @@ import Foundation
 //         "geometry":{
 //            "x":421343.26680000033,
 //            "y":4485591.7861
-//         }
+//         }/Users/esther/Desktop/Proyectos Xcode/AppPersonales/HorariosBus/HorariosBus/Networking/Data/StopsResponse.swift
 //      }
 //   ]
 //}
 
 
-struct StopsResponse: Decodable {
+struct StopsTrainResponse: Decodable {
     var features: [Features]
 
     struct Features: Decodable {

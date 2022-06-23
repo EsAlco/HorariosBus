@@ -1,18 +1,18 @@
 //
-//  DetailStopView.swift
+//  DetailStopTrainView.swift
 //  HorariosBus
 //
-//  Created by Esther Alcoceba Gutiérrez de León on 2/6/22.
+//  Created by Esther Alcoceba Gutiérrez de León on 20/6/22.
 //
 
 import SwiftUI
 import CoreData
 
-struct DetailStopView: View {
-    
-    @Environment(\.managedObjectContext) private var managedObjectContext
+struct DetailStopTrainView: View {
     
     @Environment (\.presentationMode) var presentationMode
+    
+    @Environment(\.managedObjectContext) private var managedObjectContext
     
     @State var nameStop: String
     @State var numberStop: String
@@ -21,9 +21,9 @@ struct DetailStopView: View {
     @State var aliasStop: String
     @State var featureStop: Bool
     
+    @State var isCharged = false
+    @State var showingAlertError = false
     @State private var showDeleteFeature = false
-    @State private var showingAlertError = false
-    @State private var isCharged = false
     
     var stopId: NSManagedObjectID?
     let viewModel = AddStopViewModel()
@@ -34,18 +34,16 @@ struct DetailStopView: View {
                 VStack{
                     HStack{
                         RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(Color.greenBus)
+                            .foregroundColor(Color.redTrain)
                             .frame(width: 60, height: 60)
                             .overlay(
-                                Image(systemName: "bus.fill")
+                                Image(systemName: "tram.fill")
                                     .scaleEffect(2)
                             )
-                        
                         VStack(alignment: .leading){
                             Text(nameStop)
                                 .font(.system(size: 20, weight: .bold, design: .rounded))
-                            Text(numberStop)
-                                .font(.system(.headline, design: .rounded))
+                                .minimumScaleFactor(0.01)
                             HStack{
                                 Text("Zona tarifaria: \(tariffZoneStop)")
                                     .font(.system(.subheadline, design: .rounded))
@@ -54,7 +52,7 @@ struct DetailStopView: View {
                         .padding(.leading, 5)
                     }
                     .padding()
-                    .background(Color.greenBus.opacity(0.4))
+                    .background(Color.redTrain.opacity(0.4))
                     .cornerRadius(10)
                     
                     Spacer()
@@ -62,9 +60,34 @@ struct DetailStopView: View {
                     List{
                         ForEach (linesStop.replacingOccurrences(of: ",", with: "").components(separatedBy: " "), id:\.self) { line in
                             Text(line)
+                                .textCase(.uppercase)
                                 .padding(5)
                                 .frame(width: 60, height: 30)
-                                .background(Color.greenBus.opacity(0.9))
+                                .background{
+                                    switch line {
+                                    case "C-1":
+                                        Color.C1
+                                    case "C-2":
+                                        Color.C2
+                                    case "C-3":
+                                        Color.C3
+                                    case "C-3A", "C-3B":
+                                        Color.C3AB
+                                    case "C-4":
+                                        Color.C4
+                                    case "C-5":
+                                        Color.C5
+                                    case "C-7":
+                                        Color.C7
+                                    case "C-8":
+                                        Color.C8
+                                    case "C-9":
+                                        Color.C9
+                                    case "C-10":
+                                        Color.C10
+                                    default:
+                                        Color.greenBus
+                                    }}
                                 .cornerRadius(9)
                         }
                     }.refreshable {
@@ -92,10 +115,22 @@ struct DetailStopView: View {
             })
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Atrás"){
+                    Label("Atrás", systemImage: "chevron.backward")
+                        .font(.subheadline)
+                        .foregroundColor(Color.redTrain)
+                        .onTapGesture {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }
+                
+                ToolbarItem(placement: .principal) {
+                    Text(nameStop)
+                        .foregroundColor(Color.redTrain)
+                        .font(.system(.title2, design: .rounded))
+                        .minimumScaleFactor(0.01)
+                        .frame(width: 200)
+                }
+                
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button{
                         self.isCharged.toggle()
@@ -103,6 +138,7 @@ struct DetailStopView: View {
                         
                     }label: {
                         Image(systemName: "arrow.clockwise")
+                            .foregroundColor(Color.redTrain)
                     }
                     Button{
                         if !featureStop {
@@ -120,27 +156,28 @@ struct DetailStopView: View {
                         }
                     }label: {
                         Image(systemName: featureStop ? "heart.fill" : "heart")
+                            .foregroundColor(Color.redTrain)
                     }
                 }
             }
         }
         .navigationBarHidden(true)
-        
         .onAppear{
             self.isCharged.toggle()
             chargedNetworking()
         }
     }
+    
     func chargedNetworking() {
-        NetworkingProvider.shared.getStop(numberStop: numberStop) { stopResponse in
+        NetworkingProvider.shared.getStopTrain(numberLine: numberStop) { stopTrainResponse in
             self.isCharged.toggle()
-            for attributes in stopResponse.features{
+            
+            for attributes in stopTrainResponse.features {
                 nameStop = attributes.nameStop
                 numberStop = attributes.numberStop
                 tariffZoneStop = attributes.tariffZoneStop
                 linesStop = attributes.linesStop
             }
-                        
         } failure: { error in
             self.isCharged.toggle()
             self.showingAlertError.toggle()
@@ -164,48 +201,8 @@ struct DetailStopView: View {
     }
 }
 
-struct DetailStopView_Previews: PreviewProvider {
+struct DetailStopTrainView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailStopView(nameStop: "Av Lazarejo - C/Santolina", numberStop: "12345", tariffZoneStop: "B2", linesStop: "628, L1", aliasStop: "", featureStop: false)
-    }
-}
-
-
-extension View{
-    
-    // MARK: Alert's TextField
-    func alertTextField(title: String, message: String, hintText: String, primaryTitle: String, secondaryTitle: String, primaryAction: @escaping (String)->(), secondaryAction: @escaping ()->()){
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addTextField { field in
-            field.placeholder = hintText
-        }
-        
-        alert.addAction(.init(title: secondaryTitle, style: .cancel, handler: { _ in
-            secondaryAction()
-        }))
-        
-        alert.addAction(.init(title: primaryTitle, style: .default, handler: { _ in
-            if let text = alert.textFields?[0].text {
-                primaryAction(text)
-            } else {
-                primaryAction("")
-            }
-        }))
-        
-        // MARK: Presenting alert
-        rootController().present(alert, animated: true, completion: nil)
-    }
-    
-    // MARK: Root View Controller
-    func rootController()->UIViewController {
-        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
-            return .init()
-        }
-        
-        guard let root = screen.windows.first?.rootViewController else {
-            return .init()
-        }
-        return root
+        DetailStopTrainView(nameStop: "Pinar de Las Rozas", numberStop: "55", tariffZoneStop: "B2", linesStop: "C-8, C-10", aliasStop: "", featureStop: false)
     }
 }

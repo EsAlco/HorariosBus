@@ -13,7 +13,7 @@ final class NetworkingProvider {
     static let shared = NetworkingProvider()
     
     private let kBaseUrlInterUrban = "https://services5.arcgis.com/UxADft6QPcvFyDU1/arcgis/rest/services/M8_Red/FeatureServer/"
-    private let kBaseUrlCercanias = "https://services5.arcgis.com/UxADft6QPcvFyDU1/arcgis/rest/services/M5_Red/FeatureServer/0/query?where=1%3D1&outFields=DENOMINACION,CORONATARIFARIA,LINEAS,CODIGOESTACION&outSR=4326&f=json"
+    private let kBaseUrlTrain = "https://services5.arcgis.com/UxADft6QPcvFyDU1/arcgis/rest/services/M5_Red/FeatureServer/"
     private let kStatusOk = 200...299
     
     
@@ -87,6 +87,36 @@ final class NetworkingProvider {
             response in
             if let stopsByLocationResponse = response.value{
                 success(stopsByLocationResponse)
+            } else {
+                failure(response.error)
+                print(response.error!)
+            }
+        }
+    }
+    
+    func getStopTrain(numberLine: String, success: @escaping (_ stopTrainResponse: StopsResponse) -> (), failure: @escaping (_ error: Error?) -> ()) {
+        
+        let url = "\(kBaseUrlTrain)0/query?where=CODIGOESTACION='\(numberLine)'&outFields=CODIGOESTACION,DENOMINACION,CORONATARIFARIA,LINEAS&outSR=4326&f=json"
+        
+        AF.request(url, method: .get).validate(statusCode: kStatusOk).responseDecodable (of: StopsResponse.self) {
+            response in
+            if let stopTrainResponse = response.value {
+                success(stopTrainResponse)
+            } else {
+                failure(response.error)
+                print(response.error!)
+            }
+        }
+    }
+    
+    func getAllStopTrain(success: @escaping (_ allStopsTrainResponse: StopsResponse) -> (), failure: @escaping (_ error: Error?) -> ()) {
+        
+        let url = "\(kBaseUrlTrain)0/query?where=1%3D1&outFields=CODIGOESTACION,DENOMINACION,CORONATARIFARIA,LINEAS&outSR=4326&f=json"
+        
+        AF.request(url, method: .get).validate(statusCode: kStatusOk).responseDecodable (of: StopsResponse.self) {
+            response in
+            if let allStopsTrainResponse = response.value {
+                success(allStopsTrainResponse)
             } else {
                 failure(response.error)
                 print(response.error!)

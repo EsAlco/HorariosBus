@@ -33,7 +33,7 @@ struct MapView: View {
                         Map(coordinateRegion: $locationViewModel.userLocation, showsUserLocation: true, annotationItems: locations) { location in
                             MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: location.yGeometryStop, longitude: location.xGeometryStop)) {
                                 VStack{
-                                    MapCellView(nameStop: location.nameStop, numberStop: location.numberStop, linesStop: location.linesStop, isHiddenStop: isHiddenStop, showNavigationDetailStop: $showNavigationDetailStop)
+                                    MapCellView(nameStop: location.nameStop, numberStop: location.numberStop, linesStop: location.linesStop, typeOfTransport: location.typeOfTransport, isHiddenStop: isHiddenStop, showNavigationDetailStop: $showNavigationDetailStop)
                                     NavigationLink("",destination: DetailStopView(nameStop: "", numberStop: location.numberStop, tariffZoneStop: "", linesStop: "", aliasStop: "", featureStop: false), isActive: $showNavigationDetailStop)
                                         .hidden()
                                 }
@@ -81,7 +81,7 @@ struct MapView: View {
         NetworkingProvider.shared.getAllStops { allStopsResponse in
             self.isCharged.toggle()
             for attributes in allStopsResponse.features{
-                locations.append(contentsOf: [Location(nameStop: attributes.nameStop, numberStop: attributes.numberStop, tariffZoneStop: attributes.tariffZoneStop, linesStop: attributes.linesStop, xGeometryStop: attributes.xGeometryStop, yGeometryStop: attributes.yGeometryStop)])
+                locations.append(contentsOf: [Location(nameStop: attributes.nameStop, numberStop: attributes.numberStop, tariffZoneStop: attributes.tariffZoneStop, linesStop: attributes.linesStop, typeOfTransport: "Interurban", xGeometryStop: attributes.xGeometryStop, yGeometryStop: attributes.yGeometryStop)])
             }
         } failure: { error in
             self.isCharged.toggle()
@@ -92,7 +92,7 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(locations: [Location(nameStop: "", numberStop: "", tariffZoneStop: "", linesStop: "", xGeometryStop: 0.0, yGeometryStop: 0.0)])
+        MapView(locations: [Location(nameStop: "", numberStop: "", tariffZoneStop: "", linesStop: "", typeOfTransport: "Interurban", xGeometryStop: 0.0, yGeometryStop: 0.0)])
     }
 }
 

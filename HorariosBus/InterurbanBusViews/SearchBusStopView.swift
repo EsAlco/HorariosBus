@@ -11,10 +11,10 @@ struct SearchBusStopView: View {
     
     @Environment (\.presentationMode) var presentationMode
     
-    @Environment(\.managedObjectContext) var managedObjectContext
-    
-    @FetchRequest(entity: Stop.entity(), sortDescriptors: []) var busStops: FetchedResults<Stop>
-    
+//    @Environment(\.managedObjectContext) var managedObjectContext
+//    
+//    @FetchRequest(entity: Stop.entity(), sortDescriptors: []) var busStops: FetchedResults<Stop>
+//    
     @State var searchTextNumberStop: String
     
     @State var isNavigation = false
@@ -32,9 +32,9 @@ struct SearchBusStopView: View {
                         
                         HStack{
                             Spacer()
-                            //TODO: Busqueda por dirección
+                            
                             Image(systemName: "paperplane.circle.fill")
-                                .foregroundColor(.green)
+                                .foregroundColor(Color.greenBus)
                                 . font(.system(size: 50))
                                 .onTapGesture {
                                     self.showingSearchLocation.toggle()
@@ -42,7 +42,7 @@ struct SearchBusStopView: View {
                             Spacer()
                             
                             Image(systemName: "map.circle.fill")
-                                .foregroundColor(.green)
+                                .foregroundColor(Color.greenBus)
                                 . font(.system(size: 50))
                                 .onTapGesture {
                                     self.showingMap.toggle()
@@ -50,7 +50,7 @@ struct SearchBusStopView: View {
                             Spacer()
                             
                             Image(systemName: "mappin.circle.fill")
-                                .foregroundColor(.green)
+                                .foregroundColor(Color.greenBus)
                                 . font(.system(size: 50))
                                 .onTapGesture {
                                     self.showingSearchLine.toggle()
@@ -70,7 +70,7 @@ struct SearchBusStopView: View {
                                         Text("Buscar")
                                             .foregroundColor(.white)
                                             .padding(5)
-                                            .background(.green)
+                                            .background(Color.greenBus)
                                             .cornerRadius(7)
                                             .onTapGesture {
                                                 if searchTextNumberStop.isEmpty{
@@ -84,7 +84,6 @@ struct SearchBusStopView: View {
                                             }
                                     }
                             }
-                            
                             .padding(8)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5, style: .continuous)
@@ -113,16 +112,18 @@ struct SearchBusStopView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Label("Atrás", systemImage: "chevron.backward")
                         .font(.subheadline)
+                        .foregroundColor(Color.greenBus)
                         .onTapGesture {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }
                 ToolbarItem(placement: .principal) {
                     Text("Interurbanos")
+                        .foregroundColor(Color.greenBus)
                 }
             }
             .sheet(isPresented: $showingMap) {
-                MapView(locations: [Location(nameStop: "", numberStop: "", tariffZoneStop: "", linesStop: "", xGeometryStop: 0.0, yGeometryStop: 0.0)])
+                MapView(locations: [Location(nameStop: "", numberStop: "", tariffZoneStop: "", linesStop: "", typeOfTransport: "", xGeometryStop: 0.0, yGeometryStop: 0.0)])
             }
             .sheet(isPresented: $showingSearchLine) {
                 LinesView(searchLine: "", direction: "")
