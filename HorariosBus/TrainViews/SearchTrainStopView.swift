@@ -17,6 +17,11 @@ struct SearchTrainStopView: View {
     
     @State var showingAlertEmpty = false
     @State var showingAlertError = false
+    
+    @State var showingImageMapTrainView = false
+    @State var showingMapTrainView = false
+    
+    
     @State var isNavigation = false
     @State var isCharged = false
     
@@ -28,20 +33,29 @@ struct SearchTrainStopView: View {
                         HStack{
                             Spacer()
                             
-                            Image(systemName: "paperplane.circle.fill")
-                                .foregroundColor(Color.redTrain)
-                                . font(.system(size: 50))
-                                .onTapGesture {
-                                    //self.showingSearchLocation.toggle()
-                                }
-                            Spacer()
+                            ZStack{
+                                Image(systemName: "paperplane.circle.fill")
+                                    .foregroundColor(Color.redTrain)
+                                    . font(.system(size: 50))
+                                    .onTapGesture {
+                                        self.showingImageMapTrainView.toggle()
+                                    }
+                                NavigationLink("", destination: ImageMapsView(), isActive: $showingImageMapTrainView)
+                                    .hidden()
+                            }
                             
-                            Image(systemName: "map.circle.fill")
-                                .foregroundColor(Color.redTrain)
-                                . font(.system(size: 50))
-                                .onTapGesture {
-                                   // self.showingMap.toggle()
-                                }
+                            Spacer()
+                            ZStack{
+                                Image(systemName: "map.circle.fill")
+                                    .foregroundColor(Color.redTrain)
+                                    . font(.system(size: 50))
+                                    .onTapGesture {
+                                        self.showingMapTrainView.toggle()
+                                    }
+                                NavigationLink("", destination: MapTrainView(), isActive: $showingMapTrainView)
+                                    .hidden()
+                            }
+                            
                             Spacer()
                         }
                     }
@@ -83,7 +97,7 @@ struct SearchTrainStopView: View {
                                             self.isNavigation.toggle()
                                             numberStop = stop.number
                                         }
-                                        NavigationLink("", destination: DetailStopTrainView(nameStop: "", numberStop: numberStop,  tariffZoneStop: "", linesStop: "", aliasStop: "", featureStop: false), isActive: $isNavigation)
+                                        NavigationLink("", destination: DetailStopTrainView(nameStop: "", numberStop: numberStop,  tariffZoneStop: "", linesStop: "", aliasStop: "", featureStop: false, typeTransport: ""), isActive: $isNavigation)
                                             .hidden()
                                     }
                                 }
@@ -138,11 +152,11 @@ struct SearchTrainStopView: View {
     }
     
     func chargedNetworking() {
-        NetworkingProvider.shared.getAllStopTrain { allStopsTrainResponse in
+        NetworkingProvider.shared.getAllStopsTrain { allStopsTrainResponse in
             self.isCharged.toggle()
             for attibutes in allStopsTrainResponse.features {
-                if allStops.contains(StopValues(name: attibutes.nameStop, number: attibutes.numberStop, tariffZone: attibutes.tariffZoneStop, lines: attibutes.linesStop, alias: "", feature: false)) == false{
-                    allStops.append(StopValues(name: attibutes.nameStop, number: attibutes.numberStop, tariffZone: attibutes.tariffZoneStop, lines: attibutes.linesStop, alias: "", feature: false))
+                if allStops.contains(StopValues(name: attibutes.nameStop, number: attibutes.numberStop, tariffZone: attibutes.tariffZoneStop, lines: attibutes.linesStop, alias: "", feature: false, typeTransport: "")) == false{
+                    allStops.append(StopValues(name: attibutes.nameStop, number: attibutes.numberStop, tariffZone: attibutes.tariffZoneStop, lines: attibutes.linesStop, alias: "", feature: false, typeTransport: ""))
                 }
             }
         } failure: { error in

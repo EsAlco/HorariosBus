@@ -14,4 +14,5 @@ struct StopValues: Hashable, Codable {
     var lines: String
     var alias: String
     var feature: Bool
+    var typeTransport: String
 }

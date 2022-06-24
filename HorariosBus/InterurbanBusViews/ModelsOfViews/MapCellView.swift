@@ -20,10 +20,10 @@ struct MapCellView: View {
     var body: some View {
         VStack{
             HStack{
-                Image(systemName: typeOfTransport == "Interurban" ? "bus.fill" : "tram.fill")
+                Image(systemName: typeOfTransport == "Interurban" ? "bus.fill" : typeOfTransport == "Train" ? "tram.fill" : "questionmark.circle")
                     .padding(9)
                     .frame(width: 60, height: 60)
-                    .background(typeOfTransport == "Interurban" ? .green : .red)
+                    .background(typeOfTransport == "Interurban" ? Color.greenBus : typeOfTransport == "Train" ? Color.redTrain : Color.yellow)
                     .cornerRadius(9)
                     .font(.title)
                     .padding()

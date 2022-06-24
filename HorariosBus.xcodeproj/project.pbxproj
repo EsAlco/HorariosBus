@@ -27,6 +27,8 @@
 		EB3E2133285A593E00CF9F3F /* DetailLocationStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E2132285A593E00CF9F3F /* DetailLocationStopView.swift */; };
 		EB3E21372860900A00CF9F3F /* SearchTrainStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E21362860900A00CF9F3F /* SearchTrainStopView.swift */; };
 		EB3E213B2860D6D300CF9F3F /* DetailStopTrainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E213A2860D6D300CF9F3F /* DetailStopTrainView.swift */; };
+		EB3E213F286519AB00CF9F3F /* ImageMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E213E286519AB00CF9F3F /* ImageMapsView.swift */; };
+		EB3E214128651C2A00CF9F3F /* MapTrainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E214028651C2900CF9F3F /* MapTrainView.swift */; };
 		EB41208328522D2B00CF46E0 /* CellLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB41208228522D2B00CF46E0 /* CellLineView.swift */; };
 		EB41208628524A9400CF46E0 /* DetailLineStopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB41208528524A9400CF46E0 /* DetailLineStopsView.swift */; };
 		EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */; };
@@ -61,6 +63,8 @@
 		EB3E2132285A593E00CF9F3F /* DetailLocationStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLocationStopView.swift; sourceTree = "<group>"; };
 		EB3E21362860900A00CF9F3F /* SearchTrainStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrainStopView.swift; sourceTree = "<group>"; };
 		EB3E213A2860D6D300CF9F3F /* DetailStopTrainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStopTrainView.swift; sourceTree = "<group>"; };
+		EB3E213E286519AB00CF9F3F /* ImageMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMapsView.swift; sourceTree = "<group>"; };
+		EB3E214028651C2900CF9F3F /* MapTrainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrainView.swift; sourceTree = "<group>"; };
 		EB41208228522D2B00CF46E0 /* CellLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellLineView.swift; sourceTree = "<group>"; };
 		EB41208528524A9400CF46E0 /* DetailLineStopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLineStopsView.swift; sourceTree = "<group>"; };
 		EBB3C44A2816A25500768C2E /* HorariosBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorariosBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				EB3E213A2860D6D300CF9F3F /* DetailStopTrainView.swift */,
+				EB3E213E286519AB00CF9F3F /* ImageMapsView.swift */,
+				EB3E214028651C2900CF9F3F /* MapTrainView.swift */,
 			);
 			path = DetailsView;
 			sourceTree = "<group>";
@@ -345,8 +351,10 @@
 				EB3E212A28589A6D00CF9F3F /* StopByLineValues.swift in Sources */,
 				EBB3C4632817159400768C2E /* SearchBusStopView.swift in Sources */,
 				EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */,
+				EB3E213F286519AB00CF9F3F /* ImageMapsView.swift in Sources */,
 				EBD14206284E1C1500402170 /* LocationViewModel.swift in Sources */,
 				EB2AABC02840A9A500A564A9 /* NetworkingProvider.swift in Sources */,
+				EB3E214128651C2A00CF9F3F /* MapTrainView.swift in Sources */,
 				EB3DCCEE2851F8390083E1C6 /* LinesView.swift in Sources */,
 				EBB3C4652818491100768C2E /* SelectorView.swift in Sources */,
 				EB3E213B2860D6D300CF9F3F /* DetailStopTrainView.swift in Sources */,

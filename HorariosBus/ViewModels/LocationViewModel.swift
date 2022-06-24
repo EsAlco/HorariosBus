@@ -12,8 +12,8 @@ import MapKit
 
 final class LocationViewModel: NSObject, ObservableObject {
     private struct DefaultRegion {
-        static let latitude = 40.4929200
-        static let longitude = -3.8737100
+        static let latitude = 40.416729
+        static let longitude = -3.703339
     }
     private struct Span {
         static let delta = 0.002

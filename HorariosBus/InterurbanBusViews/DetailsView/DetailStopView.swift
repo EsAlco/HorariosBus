@@ -110,7 +110,7 @@ struct DetailStopView: View {
                                 
                                     self.featureStop = true
                                
-                                let values = StopValues(name: nameStop, number: numberStop, tariffZone: tariffZoneStop, lines: linesStop, alias: text == "" ? nameStop : text, feature: featureStop)
+                                let values = StopValues(name: nameStop, number: numberStop, tariffZone: tariffZoneStop, lines: linesStop, alias: text == "" ? nameStop : text, feature: featureStop, typeTransport: "Interurban")
                                 
                                 viewModel.saveStop(stopId: stopId, with: values, in: managedObjectContext)
                                 } secondaryAction: {}

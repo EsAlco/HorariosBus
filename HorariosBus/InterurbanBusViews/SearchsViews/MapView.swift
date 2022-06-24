@@ -47,7 +47,7 @@ struct MapView: View {
                         if isCharged {
                             ProgressView()
                                 .scaleEffect(2)
-                                .progressViewStyle(CircularProgressViewStyle(tint: .green))
+                                .progressViewStyle(CircularProgressViewStyle(tint: .greenBus))
                         }
                     }
                     if locationViewModel.userHasLocation {

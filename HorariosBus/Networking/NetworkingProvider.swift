@@ -109,7 +109,7 @@ final class NetworkingProvider {
         }
     }
     
-    func getAllStopTrain(success: @escaping (_ allStopsTrainResponse: StopsResponse) -> (), failure: @escaping (_ error: Error?) -> ()) {
+    func getAllStopsTrain(success: @escaping (_ allStopsTrainResponse: StopsResponse) -> (), failure: @escaping (_ error: Error?) -> ()) {
         
         let url = "\(kBaseUrlTrain)0/query?where=1%3D1&outFields=CODIGOESTACION,DENOMINACION,CORONATARIFARIA,LINEAS&outSR=4326&f=json"
         

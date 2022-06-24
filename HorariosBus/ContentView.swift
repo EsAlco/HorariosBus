@@ -17,7 +17,9 @@ struct ContentView: View {
     @State private var searchText: String = ""
     @State var isInterBus = false
     @State var isTrein = false
-    @State private var isDetailView = false
+    
+    @State private var isDetailStopBusView = false
+    @State private var isDetailStopTrainView = false
     
     
     @State var showingAlert = false
@@ -60,19 +62,43 @@ struct ContentView: View {
                             HStack{
                                 CellStopView(
                                     aliasStop: busStop.alias ?? "Desconocido",
-                                    numberStop: busStop.number ?? "")
+                                    numberStop: busStop.number ?? "",
+                                    typeTransport: busStop.typeTransport ?? "")
                                 .onTapGesture {
-                                    self.isDetailView.toggle()
+                                    self.isDetailStopTrainView.toggle()
+//                                    if busStop.typeTransport == "Interurban" {
+//                                        self.isDetailStopBusView.toggle()
+//                                    }
+//                                    if busStop.typeTransport == "Train" {
+//                                        self.isDetailStopTrainView.toggle()
+//                                    }
+                                    
                                 }
-                                NavigationLink("", destination: DetailStopView(
-                                                nameStop: busStop.name ?? "",
-                                                numberStop: busStop.number ?? "",
-                                                tariffZoneStop: busStop.tariffZone ?? "",
-                                                linesStop: busStop.lines ?? "",
-                                                aliasStop: busStop.alias ?? "",
-                                                featureStop: busStop.feature),
-                                           isActive: $isDetailView)
-                                    .hidden()
+                                if busStop.typeTransport == "Interurban" {
+                                    NavigationLink("", destination: DetailStopView(
+                                                    nameStop: busStop.name ?? "",
+                                                    numberStop: busStop.number ?? "",
+                                                    tariffZoneStop: busStop.tariffZone ?? "",
+                                                    linesStop: busStop.lines ?? "",
+                                                    aliasStop: busStop.alias ?? "",
+                                                    featureStop: busStop.feature),
+                                               isActive: $isDetailStopTrainView)
+                                        .hidden()
+                                }
+                                if busStop.typeTransport == "Train"{
+                                    NavigationLink("", destination: DetailStopTrainView(
+                                                    nameStop: busStop.name ?? "",
+                                                    numberStop: busStop.number ?? "",
+                                                    tariffZoneStop: busStop.tariffZone ?? "",
+                                                    linesStop: busStop.lines ?? "",
+                                                    aliasStop: busStop.alias ?? "",
+                                                    featureStop: busStop.feature,
+                                                    typeTransport: busStop.typeTransport ?? ""),
+                                               isActive: $isDetailStopTrainView)
+                                        .hidden()
+                                }
+
+
                             }
                         }.onDelete(perform: removeBusStops)
                     }
@@ -80,7 +106,7 @@ struct ContentView: View {
                     Text("Paradas favoritas")
                 }
             }
-            .navigationTitle("Autobuses")
+            .navigationTitle("Transportes")
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Número de parada")
         }
     }

@@ -11,12 +11,14 @@ struct CellStopView: View {
     
     @State var aliasStop: String
     @State var numberStop: String
+    @State var typeTransport: String
     
     var body: some View {
         HStack{
-            Image(systemName: "bus.fill")
+            Image(systemName: typeTransport == "Interurban" ? "bus.fill" : typeTransport == "Train" ? "tram.fill" : "questionmark.circle")
                 .padding(5)
-                .foregroundColor(.green)
+                .foregroundColor(typeTransport == "Interurban" ? Color.greenBus : typeTransport == "Train" ? Color.redTrain : Color.yellow)
+                .frame(width: 50, height: 50)
                 .overlay(
                     RoundedRectangle(cornerRadius: 5, style: .continuous)
                         .stroke(.gray, lineWidth: 1)
@@ -27,6 +29,8 @@ struct CellStopView: View {
                     .font(.system(.callout, design: .rounded))
                 Text(numberStop)
                     .font(.system(size: 12, weight: .light, design: .rounded))
+                    .minimumScaleFactor(0.01)
+                Text(typeTransport)
             }
         }
     }
@@ -34,6 +38,6 @@ struct CellStopView: View {
 
 struct CellStopView_Previews: PreviewProvider {
     static var previews: some View {
-        CellStopView(aliasStop: "Av. Lazarejo/Santolina", numberStop: "15213")
+        CellStopView(aliasStop: "Av. Lazarejo/Santolina", numberStop: "15213", typeTransport: "Interurban")
     }
 }

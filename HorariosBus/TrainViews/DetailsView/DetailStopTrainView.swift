@@ -20,6 +20,7 @@ struct DetailStopTrainView: View {
     @State var linesStop: String
     @State var aliasStop: String
     @State var featureStop: Bool
+    @State var typeTransport: String
     
     @State var isCharged = false
     @State var showingAlertError = false
@@ -146,7 +147,7 @@ struct DetailStopTrainView: View {
                                 
                                     self.featureStop = true
                                
-                                let values = StopValues(name: nameStop, number: numberStop, tariffZone: tariffZoneStop, lines: linesStop, alias: text == "" ? nameStop : text, feature: featureStop)
+                                let values = StopValues(name: nameStop, number: numberStop, tariffZone: tariffZoneStop, lines: linesStop, alias: text == "" ? nameStop : text, feature: featureStop, typeTransport: typeTransport)
                                 
                                 viewModel.saveStop(stopId: stopId, with: values, in: managedObjectContext)
                                 } secondaryAction: {}
@@ -177,6 +178,7 @@ struct DetailStopTrainView: View {
                 numberStop = attributes.numberStop
                 tariffZoneStop = attributes.tariffZoneStop
                 linesStop = attributes.linesStop
+                typeTransport = "Train"
             }
         } failure: { error in
             self.isCharged.toggle()
@@ -203,6 +205,6 @@ struct DetailStopTrainView: View {
 
 struct DetailStopTrainView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailStopTrainView(nameStop: "Pinar de Las Rozas", numberStop: "55", tariffZoneStop: "B2", linesStop: "C-8, C-10", aliasStop: "", featureStop: false)
+        DetailStopTrainView(nameStop: "Pinar de Las Rozas", numberStop: "55", tariffZoneStop: "B2", linesStop: "C-8, C-10", aliasStop: "", featureStop: false, typeTransport: "Train")
     }
 }

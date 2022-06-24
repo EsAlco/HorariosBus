@@ -29,6 +29,7 @@ struct AddStopViewModel {
         stop.lines = stopValues.lines
         stop.alias = stopValues.alias
         stop.feature = stopValues.feature
+        stop.typeTransport = stopValues.typeTransport
         
         do {
             try context.save()

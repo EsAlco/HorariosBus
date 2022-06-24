@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Stop" representedClassName="Stop" syncable="YES" codeGenerationType="class">
         <attribute name="alias" optional="YES" attributeType="String"/>
         <attribute name="feature" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -7,8 +7,9 @@
         <attribute name="name" attributeType="String"/>
         <attribute name="number" attributeType="String"/>
         <attribute name="tariffZone" optional="YES" attributeType="String"/>
+        <attribute name="typeTransport" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Stop" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Stop" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>
