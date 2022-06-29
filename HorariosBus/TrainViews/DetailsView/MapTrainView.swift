@@ -61,6 +61,14 @@ struct MapTrainView: View {
                     .padding(32)
             }
         }
+        .toolbar{
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Image(systemName: "chevron.down.circle")
+                    .onTapGesture {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+            }
+        }
         .alert("Error al cargar las paradas", isPresented: $showingAlertError) {
             Button("OK", role: .cancel){}
         }

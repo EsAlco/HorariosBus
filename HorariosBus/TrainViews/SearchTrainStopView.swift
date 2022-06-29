@@ -40,8 +40,6 @@ struct SearchTrainStopView: View {
                                     .onTapGesture {
                                         self.showingImageMapTrainView.toggle()
                                     }
-                                NavigationLink("", destination: ImageMapsView(), isActive: $showingImageMapTrainView)
-                                    .hidden()
                             }
                             
                             Spacer()
@@ -52,8 +50,6 @@ struct SearchTrainStopView: View {
                                     .onTapGesture {
                                         self.showingMapTrainView.toggle()
                                     }
-                                NavigationLink("", destination: MapTrainView(), isActive: $showingMapTrainView)
-                                    .hidden()
                             }
                             
                             Spacer()
@@ -142,6 +138,12 @@ struct SearchTrainStopView: View {
             }
             .alert("Error al cargar las paradas", isPresented: $showingAlertError) {
                 Button("OK", role: .cancel){}
+            }
+            .sheet(isPresented: $showingImageMapTrainView) {
+                ImageMapsView()
+            }
+            .sheet(isPresented: $showingMapTrainView) {
+                MapTrainView()
             }
             .onAppear{
                 isCharged.toggle()

@@ -111,4 +111,5 @@ extension Color {
     static let C8 = Color("C-8")
     static let C9 = Color("C-9")
     static let C10 = Color("C-10")
+    static let CellMapView = Color("CellMapView")
 }

@@ -33,13 +33,13 @@ struct MapCellView: View {
                         .multilineTextAlignment(.leading)
                     Text(numberStop)
                         .font(.system(size: 10, weight: .regular, design: .rounded))
-                        .foregroundColor(typeOfTransport == "Interurban" ? .green : .red)
+                        .foregroundColor(typeOfTransport == "Interurban" ? .greenBus : .redTrain)
                     WrapView(items: linesStop.replacingOccurrences(of: ",", with: "").components(separatedBy: " "))
                 }
                 Spacer()
             }
             .padding(8)
-            .background(.gray)
+            .background(Color.CellMapView)
             .cornerRadius(10)
             .opacity(isHiddenStop ? 1 : 0)
             .onTapGesture {

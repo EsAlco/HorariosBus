@@ -24,7 +24,9 @@ struct ImageMapsView: View {
                             scale = value
                         })
                 )
+            
         }
+        
         .navigationBarHidden(true)
     }
 }

@@ -18,8 +18,7 @@ struct ContentView: View {
     @State var isInterBus = false
     @State var isTrein = false
     
-    @State private var isDetailStopBusView = false
-    @State private var isDetailStopTrainView = false
+    @State private var isDetailStopView = false
     
     
     @State var showingAlert = false
@@ -65,15 +64,9 @@ struct ContentView: View {
                                     numberStop: busStop.number ?? "",
                                     typeTransport: busStop.typeTransport ?? "")
                                 .onTapGesture {
-                                    self.isDetailStopTrainView.toggle()
-//                                    if busStop.typeTransport == "Interurban" {
-//                                        self.isDetailStopBusView.toggle()
-//                                    }
-//                                    if busStop.typeTransport == "Train" {
-//                                        self.isDetailStopTrainView.toggle()
-//                                    }
-                                    
+                                    self.isDetailStopView.toggle()
                                 }
+                                
                                 if busStop.typeTransport == "Interurban" {
                                     NavigationLink("", destination: DetailStopView(
                                                     nameStop: busStop.name ?? "",
@@ -82,7 +75,7 @@ struct ContentView: View {
                                                     linesStop: busStop.lines ?? "",
                                                     aliasStop: busStop.alias ?? "",
                                                     featureStop: busStop.feature),
-                                               isActive: $isDetailStopTrainView)
+                                               isActive: $isDetailStopView)
                                         .hidden()
                                 }
                                 if busStop.typeTransport == "Train"{
@@ -94,7 +87,7 @@ struct ContentView: View {
                                                     aliasStop: busStop.alias ?? "",
                                                     featureStop: busStop.feature,
                                                     typeTransport: busStop.typeTransport ?? ""),
-                                               isActive: $isDetailStopTrainView)
+                                               isActive: $isDetailStopView)
                                         .hidden()
                                 }
 
