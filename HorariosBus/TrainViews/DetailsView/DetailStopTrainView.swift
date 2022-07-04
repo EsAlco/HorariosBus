@@ -99,7 +99,7 @@ struct DetailStopTrainView: View {
                 if isCharged {
                     ProgressView()
                         .scaleEffect(2)
-                        .progressViewStyle(CircularProgressViewStyle(tint: .green))
+                        .progressViewStyle(CircularProgressViewStyle(tint: .redTrain))
                 }
             }
             .alert("Error al cargar la parada", isPresented: $showingAlertError) {

@@ -58,7 +58,7 @@ struct SearchTrainStopView: View {
                     Section{
                         VStack{
                             TextField("Escribe nombre de la parada", text: $searchTextNameStop)
-                                .keyboardType(.asciiCapable)
+                                .keyboardType(.alphabet)
                                 .disableAutocorrection(true)
                                 .padding(8)
                                 .overlay(
@@ -108,7 +108,7 @@ struct SearchTrainStopView: View {
                 if isCharged {
                     ProgressView()
                         .scaleEffect(2)
-                        .progressViewStyle(CircularProgressViewStyle(tint: .green))
+                        .progressViewStyle(CircularProgressViewStyle(tint: .redTrain))
                 }
             }
             .toolbar {
