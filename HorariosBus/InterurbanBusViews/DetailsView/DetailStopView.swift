@@ -94,7 +94,7 @@ struct DetailStopView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Atrás"){
                         self.presentationMode.wrappedValue.dismiss()
-                    }
+                    }.foregroundColor(Color.greenBus)
                 }
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button{
@@ -103,6 +103,7 @@ struct DetailStopView: View {
                         
                     }label: {
                         Image(systemName: "arrow.clockwise")
+                            .foregroundColor(Color.greenBus)
                     }
                     Button{
                         if !featureStop {
@@ -120,6 +121,7 @@ struct DetailStopView: View {
                         }
                     }label: {
                         Image(systemName: featureStop ? "heart.fill" : "heart")
+                            .foregroundColor(Color.greenBus)
                     }
                 }
             }
