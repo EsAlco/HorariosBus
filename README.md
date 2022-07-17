@@ -10,10 +10,13 @@ Esta app se crea con el fin de poder conocer los horarios de los autobuses, metr
 [![iOS](https://img.shields.io/badge/iOS_15-grey?style=for-the-badge&logo=ios&logoColor=white&labelColor=101010)]()
 
 * Es suficiente con clonarse el repositorio y ejecutar el archivo `EscapeDiariesUI.xcodeproj` en Xcode.
+* Esta app usa la libreria Alamofire.
 
 ## Como usar
 
 Al abrir la app sólo necesitas elegir que medio de transporte es el que quiere usar, pinchas en su icono, verde para los buses interurbanos, rojo para el cercanias. Esto te llevará a una pantalla de busqueda para buscar la parada de interes. La busqueda la puedes hacer conociendo el número de parada o buscando la parada en el mapa. Una vez que elijas la parada navegaras a la pantalla en detalle, en la cual encontraras todos los datos de la parada, así como las lineas que pasan por ella.
+
+> Los datos se obtienen de los datos abiertos del CRTM, empresa publica de transportes de la Comunidad de Madrid.
 
 ## Pull Request al proyecto
 
