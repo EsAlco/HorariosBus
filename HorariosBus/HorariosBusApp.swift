@@ -18,6 +18,7 @@ struct HorariosBusApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .accentColor(Color.backgrounColor)
         }
         .onChange(of: scenePhase) { _ in
             persistenceController.save()

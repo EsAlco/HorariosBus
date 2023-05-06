@@ -14,93 +14,36 @@ struct ContentView: View {
     
     @FetchRequest(entity: Stop.entity(), sortDescriptors: []) var busStops: FetchedResults<Stop>
     
-    @State private var searchText: String = ""
-    @State var isInterBus = false
-    @State var isTrein = false
-    
     @State private var isDetailStopView = false
     
+    @State private var isShowingSideMenu = false
     
     @State var showingAlert = false
     
     
     var body: some View {
         NavigationView{
-            Form{
-                Section{
-                    HStack{
-                        ZStack{
-                            Image(systemName: "bus.fill")
-                                .padding(14)
-                                .frame(width: 50, height: 50)
-                                .background(Color.greenBus)
-                                .cornerRadius(25)
-                                .onTapGesture {
-                                    self.isInterBus.toggle()
-                                }
-                            NavigationLink("", destination: SearchBusStopView(searchTextNumberStop: ""), isActive: $isInterBus)
-                                .hidden()
-                        }
-                        ZStack{
-                            Image(systemName: "tram.fill")
-                                .padding(14)
-                                .frame(width: 50, height: 50)
-                                .background(Color.redTrain)
-                                .cornerRadius(25)
-                                .onTapGesture {
-                                    self.isTrein.toggle()
-                                }
-                            NavigationLink("", destination: SearchTrainStopView(), isActive: $isTrein)
-                                .hidden()
+            ZStack{
+                MapView(isMainView: true)
+                
+                SideMenuView(isShowingSideMenu: $isShowingSideMenu)
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        self.isShowingSideMenu.toggle()
+                    } label: {
+                        if !isShowingSideMenu {
+                            Image(systemName: "list.bullet")
+                                .frame(width: 20, height: 20, alignment: .center)
+                                .foregroundColor(.black)
+                                .padding(10)
+                                .background(Color.backgrounColor)
+                                .cornerRadius(20)
                         }
                     }
-                }
-                Section {
-                    List{
-                        ForEach (busStops) { busStop in
-                            HStack{
-                                CellStopView(
-                                    aliasStop: busStop.alias ?? "Desconocido",
-                                    numberStop: busStop.number ?? "",
-                                    typeTransport: busStop.typeTransport ?? "")
-                                .onTapGesture {
-                                    self.isDetailStopView.toggle()
-                                }
-                                
-                                if busStop.typeTransport == "Interurban" {
-                                    NavigationLink("", destination: DetailStopView(
-                                                    nameStop: busStop.name ?? "",
-                                                    numberStop: busStop.number ?? "",
-                                                    tariffZoneStop: busStop.tariffZone ?? "",
-                                                    linesStop: busStop.lines ?? "",
-                                                    aliasStop: busStop.alias ?? "",
-                                                    featureStop: busStop.feature),
-                                               isActive: $isDetailStopView)
-                                        .hidden()
-                                }
-                                if busStop.typeTransport == "Train"{
-                                    NavigationLink("", destination: DetailStopTrainView(
-                                                    nameStop: busStop.name ?? "",
-                                                    numberStop: busStop.number ?? "",
-                                                    tariffZoneStop: busStop.tariffZone ?? "",
-                                                    linesStop: busStop.lines ?? "",
-                                                    aliasStop: busStop.alias ?? "",
-                                                    featureStop: busStop.feature,
-                                                    typeTransport: busStop.typeTransport ?? ""),
-                                               isActive: $isDetailStopView)
-                                        .hidden()
-                                }
-
-
-                            }
-                        }.onDelete(perform: removeBusStops)
-                    }
-                } header: {
-                    Text("Paradas favoritas")
                 }
             }
-            .navigationTitle("Transportes")
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Número de parada")
         }
     }
     

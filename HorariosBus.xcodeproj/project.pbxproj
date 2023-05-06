@@ -31,6 +31,14 @@
 		EB3E214128651C2A00CF9F3F /* MapTrainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3E214028651C2900CF9F3F /* MapTrainView.swift */; };
 		EB41208328522D2B00CF46E0 /* CellLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB41208228522D2B00CF46E0 /* CellLineView.swift */; };
 		EB41208628524A9400CF46E0 /* DetailLineStopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB41208528524A9400CF46E0 /* DetailLineStopsView.swift */; };
+		EB4BCBAA2888484700F0E2F1 /* HorariosBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4BCBA92888484700F0E2F1 /* HorariosBusTests.swift */; };
+		EB6ADBE32A056D4300AD4105 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6ADBE22A056D4300AD4105 /* Utils.swift */; };
+		EB6ADBE52A056F2D00AD4105 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6ADBE42A056F2D00AD4105 /* SideMenuView.swift */; };
+		EB6ADBE72A058BEC00AD4105 /* FavoriteStopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6ADBE62A058BEC00AD4105 /* FavoriteStopsView.swift */; };
+		EB6ADBEA2A058C6B00AD4105 /* SideMenuCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6ADBE92A058C6B00AD4105 /* SideMenuCellView.swift */; };
+		EB6ADBEC2A0590E400AD4105 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6ADBEB2A0590E400AD4105 /* Endpoints.swift */; };
+		EB6ADBEE2A06468B00AD4105 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6ADBED2A06468B00AD4105 /* Colors.swift */; };
+		EB7C00512A06C4E5000800CB /* CloseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C00502A06C4E5000800CB /* CloseButtonView.swift */; };
 		EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */; };
 		EBB3C4502816A25500768C2E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C44F2816A25500768C2E /* ContentView.swift */; };
 		EBB3C4522816A25700768C2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB3C4512816A25700768C2E /* Assets.xcassets */; };
@@ -42,6 +50,16 @@
 		EBB3C46728185D5A00768C2E /* CellStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3C46628185D5A00768C2E /* CellStopView.swift */; };
 		EBD14206284E1C1500402170 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD14205284E1C1500402170 /* LocationViewModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EB4BCBAB2888484700F0E2F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBB3C4422816A25500768C2E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBB3C4492816A25500768C2E;
+			remoteInfo = HorariosBus;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EB22D66D284BB7AC00C10344 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -67,6 +85,15 @@
 		EB3E214028651C2900CF9F3F /* MapTrainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrainView.swift; sourceTree = "<group>"; };
 		EB41208228522D2B00CF46E0 /* CellLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellLineView.swift; sourceTree = "<group>"; };
 		EB41208528524A9400CF46E0 /* DetailLineStopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLineStopsView.swift; sourceTree = "<group>"; };
+		EB4BCBA72888484700F0E2F1 /* HorariosBusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HorariosBusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB4BCBA92888484700F0E2F1 /* HorariosBusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorariosBusTests.swift; sourceTree = "<group>"; };
+		EB6ADBE22A056D4300AD4105 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		EB6ADBE42A056F2D00AD4105 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		EB6ADBE62A058BEC00AD4105 /* FavoriteStopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStopsView.swift; sourceTree = "<group>"; };
+		EB6ADBE92A058C6B00AD4105 /* SideMenuCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuCellView.swift; sourceTree = "<group>"; };
+		EB6ADBEB2A0590E400AD4105 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		EB6ADBED2A06468B00AD4105 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		EB7C00502A06C4E5000800CB /* CloseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButtonView.swift; sourceTree = "<group>"; };
 		EBB3C44A2816A25500768C2E /* HorariosBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorariosBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorariosBusApp.swift; sourceTree = "<group>"; };
 		EBB3C44F2816A25500768C2E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,10 +105,17 @@
 		EBB3C4642818491100768C2E /* SelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorView.swift; sourceTree = "<group>"; };
 		EBB3C46628185D5A00768C2E /* CellStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellStopView.swift; sourceTree = "<group>"; };
 		EBD14205284E1C1500402170 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
-		EBD14207284E372300402170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EBD14207284E372300402170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EB4BCBA42888484700F0E2F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EBB3C4472816A25500768C2E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -96,19 +130,19 @@
 		EB2AABB92840980600A564A9 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				EB2AABC12840A9A900A564A9 /* Data */,
+				EB2AABC12840A9A900A564A9 /* Model */,
 				EB2AABBF2840A9A500A564A9 /* NetworkingProvider.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		EB2AABC12840A9A900A564A9 /* Data */ = {
+		EB2AABC12840A9A900A564A9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				EB2AABBA2840986200A564A9 /* StopsResponse.swift */,
 				EB3DCCEB2851F3020083E1C6 /* StopsLinesResponse.swift */,
 			);
-			path = Data;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EB2AABC828491D3500A564A9 /* ViewModels */ = {
@@ -179,6 +213,14 @@
 			path = DetailsView;
 			sourceTree = "<group>";
 		};
+		EB4BCBA82888484700F0E2F1 /* HorariosBusTests */ = {
+			isa = PBXGroup;
+			children = (
+				EB4BCBA92888484700F0E2F1 /* HorariosBusTests.swift */,
+			);
+			path = HorariosBusTests;
+			sourceTree = "<group>";
+		};
 		EB560364284E771C0005D897 /* ModelsOfViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,15 +229,76 @@
 				EB3B17BB284FAEF700F53770 /* MapCellView.swift */,
 				EB3DCCE72850C33B0083E1C6 /* WrapView.swift */,
 				EB41208228522D2B00CF46E0 /* CellLineView.swift */,
+				EB7C00502A06C4E5000800CB /* CloseButtonView.swift */,
 			);
-			name = ModelsOfViews;
-			path = InterurbanBusViews/ModelsOfViews;
+			path = ModelsOfViews;
+			sourceTree = "<group>";
+		};
+		EB6ADBE12A056CF100AD4105 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				EB6ADBE22A056D4300AD4105 /* Utils.swift */,
+				EB6ADBEB2A0590E400AD4105 /* Endpoints.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		EB6ADBE82A058C4400AD4105 /* SideMenuViews */ = {
+			isa = PBXGroup;
+			children = (
+				EB6ADBE42A056F2D00AD4105 /* SideMenuView.swift */,
+				EB6ADBE92A058C6B00AD4105 /* SideMenuCellView.swift */,
+			);
+			path = SideMenuViews;
+			sourceTree = "<group>";
+		};
+		EB7D5DA52A0555BF003F033A /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				EBD14207284E372300402170 /* Info.plist */,
+				EB3DCCE928515D020083E1C6 /* Location.bundle */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		EB7D5DA62A0555E1003F033A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EBB3C4512816A25700768C2E /* Assets.xcassets */,
+				EBB3C4532816A25700768C2E /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EB7D5DA72A055610003F033A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EB6ADBED2A06468B00AD4105 /* Colors.swift */,
+				EB6ADBE12A056CF100AD4105 /* Util */,
+				EB2AABC828491D3500A564A9 /* ViewModels */,
+				EB560364284E771C0005D897 /* ModelsOfViews */,
+				EB3D7F54282E73E200FBD3FA /* Model */,
+				EBB3C4612817155100768C2E /* CoreData */,
+				EB2AABB92840980600A564A9 /* Networking */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		EB7D5DA82A055630003F033A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EB6ADBE82A058C4400AD4105 /* SideMenuViews */,
+				EBB3C4602817153D00768C2E /* InterurbanBusViews */,
+				EB3E213528608F0E00CF9F3F /* TrainViews */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		EBB3C4412816A25500768C2E = {
 			isa = PBXGroup;
 			children = (
 				EBB3C44C2816A25500768C2E /* HorariosBus */,
+				EB4BCBA82888484700F0E2F1 /* HorariosBusTests */,
 				EBB3C44B2816A25500768C2E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -204,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				EBB3C44A2816A25500768C2E /* HorariosBus.app */,
+				EB4BCBA72888484700F0E2F1 /* HorariosBusTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -211,19 +315,13 @@
 		EBB3C44C2816A25500768C2E /* HorariosBus */ = {
 			isa = PBXGroup;
 			children = (
-				EBD14207284E372300402170 /* Info.plist */,
-				EB3DCCE928515D020083E1C6 /* Location.bundle */,
 				EBB3C44D2816A25500768C2E /* HorariosBusApp.swift */,
 				EBB3C44F2816A25500768C2E /* ContentView.swift */,
-				EB3E213528608F0E00CF9F3F /* TrainViews */,
-				EBB3C4602817153D00768C2E /* InterurbanBusViews */,
-				EB2AABC828491D3500A564A9 /* ViewModels */,
-				EB560364284E771C0005D897 /* ModelsOfViews */,
-				EB3D7F54282E73E200FBD3FA /* Model */,
-				EBB3C4612817155100768C2E /* CoreData */,
-				EB2AABB92840980600A564A9 /* Networking */,
-				EBB3C4512816A25700768C2E /* Assets.xcassets */,
-				EBB3C4532816A25700768C2E /* Preview Content */,
+				EB7D5DA82A055630003F033A /* App */,
+				EB6ADBE62A058BEC00AD4105 /* FavoriteStopsView.swift */,
+				EB7D5DA72A055610003F033A /* Common */,
+				EB7D5DA62A0555E1003F033A /* Resources */,
+				EB7D5DA52A0555BF003F033A /* SupportingFiles */,
 			);
 			path = HorariosBus;
 			sourceTree = "<group>";
@@ -258,6 +356,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EB4BCBA62888484700F0E2F1 /* HorariosBusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB4BCBAF2888484700F0E2F1 /* Build configuration list for PBXNativeTarget "HorariosBusTests" */;
+			buildPhases = (
+				EB4BCBA32888484700F0E2F1 /* Sources */,
+				EB4BCBA42888484700F0E2F1 /* Frameworks */,
+				EB4BCBA52888484700F0E2F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB4BCBAC2888484700F0E2F1 /* PBXTargetDependency */,
+			);
+			name = HorariosBusTests;
+			productName = HorariosBusTests;
+			productReference = EB4BCBA72888484700F0E2F1 /* HorariosBusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EBB3C4492816A25500768C2E /* HorariosBus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBB3C4582816A25700768C2E /* Build configuration list for PBXNativeTarget "HorariosBus" */;
@@ -285,9 +401,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					EB4BCBA62888484700F0E2F1 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = EBB3C4492816A25500768C2E;
+					};
 					EBB3C4492816A25500768C2E = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
@@ -310,11 +430,19 @@
 			projectRoot = "";
 			targets = (
 				EBB3C4492816A25500768C2E /* HorariosBus */,
+				EB4BCBA62888484700F0E2F1 /* HorariosBusTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EB4BCBA52888484700F0E2F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EBB3C4482816A25500768C2E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -328,19 +456,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EB4BCBA32888484700F0E2F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4BCBAA2888484700F0E2F1 /* HorariosBusTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EBB3C4462816A25500768C2E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EB3D7F56282E73FC00FBD3FA /* StopValues.swift in Sources */,
+				EB6ADBEE2A06468B00AD4105 /* Colors.swift in Sources */,
 				EB41208328522D2B00CF46E0 /* CellLineView.swift in Sources */,
 				EB2AABCA28491D9C00A564A9 /* AddStopViewModel.swift in Sources */,
 				EB3E212E2858FA1100CF9F3F /* NameLocationView.swift in Sources */,
 				EB3E2133285A593E00CF9F3F /* DetailLocationStopView.swift in Sources */,
+				EB6ADBE72A058BEC00AD4105 /* FavoriteStopsView.swift in Sources */,
 				EB3E212C28589C6100CF9F3F /* StopByLineSimplyValues.swift in Sources */,
 				EB2AABC52848D2C800A564A9 /* DetailStopView.swift in Sources */,
 				EB2AABBB2840986200A564A9 /* StopsResponse.swift in Sources */,
 				EB22D66E284BB7AD00C10344 /* MapView.swift in Sources */,
+				EB7C00512A06C4E5000800CB /* CloseButtonView.swift in Sources */,
 				EBB3C46728185D5A00768C2E /* CellStopView.swift in Sources */,
 				EB3DCCEC2851F3020083E1C6 /* StopsLinesResponse.swift in Sources */,
 				EBB3C45D2816BD8800768C2E /* HorariosBus.xcdatamodeld in Sources */,
@@ -352,11 +491,15 @@
 				EBB3C4632817159400768C2E /* SearchBusStopView.swift in Sources */,
 				EBB3C44E2816A25500768C2E /* HorariosBusApp.swift in Sources */,
 				EB3E213F286519AB00CF9F3F /* ImageMapsView.swift in Sources */,
+				EB6ADBEA2A058C6B00AD4105 /* SideMenuCellView.swift in Sources */,
 				EBD14206284E1C1500402170 /* LocationViewModel.swift in Sources */,
+				EB6ADBE32A056D4300AD4105 /* Utils.swift in Sources */,
 				EB2AABC02840A9A500A564A9 /* NetworkingProvider.swift in Sources */,
+				EB6ADBEC2A0590E400AD4105 /* Endpoints.swift in Sources */,
 				EB3E214128651C2A00CF9F3F /* MapTrainView.swift in Sources */,
 				EB3DCCEE2851F8390083E1C6 /* LinesView.swift in Sources */,
 				EBB3C4652818491100768C2E /* SelectorView.swift in Sources */,
+				EB6ADBE52A056F2D00AD4105 /* SideMenuView.swift in Sources */,
 				EB3E213B2860D6D300CF9F3F /* DetailStopTrainView.swift in Sources */,
 				EB3DCCE82850C33B0083E1C6 /* WrapView.swift in Sources */,
 				EB3B17BC284FAEF700F53770 /* MapCellView.swift in Sources */,
@@ -367,7 +510,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		EB4BCBAC2888484700F0E2F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBB3C4492816A25500768C2E /* HorariosBus */;
+			targetProxy = EB4BCBAB2888484700F0E2F1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		EB4BCBAD2888484700F0E2F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JXG85VJB92;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.estheralcoceba.HorariosBusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HorariosBus.app/HorariosBus";
+			};
+			name = Debug;
+		};
+		EB4BCBAE2888484700F0E2F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JXG85VJB92;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.estheralcoceba.HorariosBusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HorariosBus.app/HorariosBus";
+			};
+			name = Release;
+		};
 		EBB3C4562816A25700768C2E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -489,8 +678,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"HorariosBus/Preview Content\"";
-				DEVELOPMENT_TEAM = JXG85VJB92;
+				DEVELOPMENT_ASSET_PATHS = "\"HorariosBus/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HorariosBus/Info.plist;
@@ -498,6 +687,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -520,8 +710,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"HorariosBus/Preview Content\"";
-				DEVELOPMENT_TEAM = JXG85VJB92;
+				DEVELOPMENT_ASSET_PATHS = "\"HorariosBus/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HorariosBus/Info.plist;
@@ -529,6 +719,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -547,6 +738,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EB4BCBAF2888484700F0E2F1 /* Build configuration list for PBXNativeTarget "HorariosBusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB4BCBAD2888484700F0E2F1 /* Debug */,
+				EB4BCBAE2888484700F0E2F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EBB3C4452816A25500768C2E /* Build configuration list for PBXProject "HorariosBus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
