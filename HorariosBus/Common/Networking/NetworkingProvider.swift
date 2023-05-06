@@ -83,7 +83,7 @@ final class NetworkingProvider {
 
         let url = Endpoints.urlInterUrbanStops
         let parameters: Parameters = [
-            "where": "1%3D1",
+            "where": "1=1",
             "outFields": "NUMEROLINEAUSUARIO,SENTIDO,NUMEROORDEN,DENOMINACION,DIRECCION,CORONATARIFARIA,CODIGOESTACION",
             "outSR": "4326",
             "f": "json"
@@ -146,7 +146,7 @@ final class NetworkingProvider {
         
         let url = Endpoints.urlTrainStation
         let parameters: Parameters = [
-            "where": "1%3D1",
+            "where": "1=1",
             "outFields": "CODIGOESTACION,DENOMINACION,CORONATARIFARIA,LINEAS",
             "outSR": "4326",
             "f": "json"
